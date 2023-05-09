@@ -139,7 +139,7 @@ function Questionnaire() {
     <div className="min-h-screen bg-gray-100 flex items-start justify-center lg:pt-16">
         <div>
             <ProgressBar progressPercentage={Math.max(5, (currentQuestionIndex / (questionnaire.length - 1)) * 100)}/>
-            <div className="bg-white p-6 rounded-lg shadow-lg w-96">
+            <div className="bg-white min-h-screen lg:min-h-0 p-6 rounded-lg shadow-lg w-96">
             <h1 className="text-2xl font-bold mb-6">
                 {questionnaire[currentQuestionIndex].question}
             </h1>
@@ -149,13 +149,13 @@ function Questionnaire() {
                     {currentQuestionIndex > 0 && (
                         <button
                         onClick={handleBackButtonClick}
-                        className="custom-border-color h-12 text-grey-600/50 font-semibold py-2 px-6 rounded-md text-sm mr-4 mb-4 whitespace-nowrap"
+                        className="sm:static sm:ml-0 sm:mb-0 custom-border-color h-12 text-grey-600/50 font-semibold py-2 px-6 rounded-md text-sm mr-4 mb-4 whitespace-nowrap"
                         >
                         &larr; Back
                         </button>
                     )}
                     <button
-                    className="w-full py-2 h-12 custom-button-color text-white font-semibold rounded-lg"
+                    className="sm:static sm:mr-0 sm:mb-0 w-full py-2 h-12 custom-button-color text-white font-semibold rounded-lg"
                     onClick={handleSubmit}
                     >
                     {currentQuestionIndex === questionnaire.length - 1 ? 'Submit' : 'Next'}
