@@ -29,7 +29,7 @@ function MultipleInputsQuestion({ question, setAnswer }) {
                     }
                     onFocus={inputFocus}
                     onBlur={inputBlur}
-                    className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:border-blue-500"
+                    className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:custom-border-color"
                 />
             </div>
             <div className="relative mb-4">
@@ -48,7 +48,7 @@ function MultipleInputsQuestion({ question, setAnswer }) {
                     }
                     onFocus={inputFocus}
                     onBlur={inputBlur}
-                    className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:border-blue-500"
+                    className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:custom-border-color"
                 />
             </div>
             <div className="relative mb-4">
@@ -67,7 +67,7 @@ function MultipleInputsQuestion({ question, setAnswer }) {
                     }
                     onFocus={inputFocus}
                     onBlur={inputBlur}
-                    className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:border-blue-500"
+                    className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:custom-border-color"
                 />
             </div>
         </div>

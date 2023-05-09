@@ -51,6 +51,15 @@ function Questionnaire() {
     if (questionnaire[currentQuestionIndex].answer === '') {
       alert('Please select an answer before proceeding.');
       return;
+    } else if ((currentQuestionIndex === questionnaire.length - 1) && questionnaire[currentQuestionIndex].answer.email === '') {
+      alert('Please enter your email address.');
+      return;
+    } else if ((currentQuestionIndex === questionnaire.length - 1) && questionnaire[currentQuestionIndex].answer.name === '') {
+        alert('Please enter your name.');
+        return;
+    } else if ((currentQuestionIndex === questionnaire.length - 1) && questionnaire[currentQuestionIndex].answer.phone === '') {
+        alert('Please enter your phone number.');
+        return;
     }
     if (currentQuestionIndex < questionnaire.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
@@ -59,14 +68,24 @@ function Questionnaire() {
       // Redirect based on the answers
       // add switch case for each answer combination
       switch (true) {
-        case answers[2] === 'Yes':
-          window.location.href = 'https://youtube.com';
+        case answers[0] === 'Wrinkles and fine lines' && answers[2] === 'No':
+          window.location.href = 'https://www.carismaaesthetics.com/chemicalpeelmalta';
           break;
-        case answers[2] === 'No':
-          window.location.href = 'https://www.google.com';
+        case answers[0] === 'Wrinkles and fine lines' && answers[2] === 'Yes':
+          window.location.href = 'https://www.carismaaesthetics.com/wrinklesandfinelines#comp-lg4zufst';
           break;
+        case answers[0] === 'Thin lips':
+            window.location.href = 'https://www.carismaaesthetics.com/thinlips#comp-lg56at0h';
+            break;
+        case answers[0] === 'Facial volumising / Contouring' && answers[2] === 'Yes':
+            window.location.href = 'https://www.carismaaesthetics.com/facialvolumisingandcontouring#comp-lg7pph011';
+            break;
+        case answers[0] === 'Facial volumising / Contouring' && answers[2] === 'No':
+            window.location.href = 'https://www.carismaaesthetics.com/facialvolumisingandcontouring#comp-lh0nejhh';
+            break;
+        case answers[0] === 'Uneven skin tone/sun damage/rosacea' && answers[1] === 'Combination':
         default:
-          window.location.href = 'https://example1.com/result';
+          window.location.href = 'https://www.carismaaesthetics.com';
       }
     }
   };
@@ -130,7 +149,7 @@ function Questionnaire() {
                     {currentQuestionIndex > 0 && (
                         <button
                         onClick={handleBackButtonClick}
-                        className="custom-border-color h-12 text-grey font-semibold py-2 px-6 rounded-md text-sm mr-4 mb-4 whitespace-nowrap"
+                        className="custom-border-color h-12 text-grey-600/50 font-semibold py-2 px-6 rounded-md text-sm mr-4 mb-4 whitespace-nowrap"
                         >
                         &larr; Back
                         </button>
