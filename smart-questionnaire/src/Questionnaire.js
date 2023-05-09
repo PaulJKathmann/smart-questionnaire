@@ -136,7 +136,7 @@ function Questionnaire() {
   
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-start justify-center pt-16">
+    <div className="min-h-screen bg-gray-100 flex items-start justify-center lg:pt-16">
         <div>
             <ProgressBar progressPercentage={Math.max(5, (currentQuestionIndex / (questionnaire.length - 1)) * 100)}/>
             <div className="bg-white p-6 rounded-lg shadow-lg w-96">
