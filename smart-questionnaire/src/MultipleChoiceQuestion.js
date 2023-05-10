@@ -1,32 +1,34 @@
 import React, {useState} from "react";
 
 function MultipleChoiceQuestion({ question, options, setAnswer }) {
-    const [selectedOptions, setSelectedOptions] = useState([]);
-
-    const handleOptionsChange = (event) => {
+    const handleOptionsChange = (option) => {
         // if the option is already selected, remove it from the array
-        if (selectedOptions.includes(event.target.value)) {
-            setSelectedOptions((prev) =>
-                prev.filter((option) => option !== event.target.value)
+        if (question.answer.includes(option)) {
+            setAnswer(question.id, question.answer.filter((o) => o !== option)
             );
         } else {
-            setSelectedOptions((prev) => [...prev, event.target.value]);
+            setAnswer(question.id, [...question.answer, option]);
         }
-        // call the handleAnswerChange function with the question id and the selected options
-        setAnswer(question.id, selectedOptions);
     };
     return (
         <div>
             {options.map((option, index) => (
-                <div key={index}>
+                <div key={index} className={`${
+                    question.answer.includes(option)
+                      ? "custom-border-color border-2"
+                      : "border-gray-200 border"
+                  } p-4 rounded-lg mb-4 bg-white cursor-pointer transition-all`}
+                  onClick={() => handleOptionsChange(option)}>
                     <input  
-                        type="radio"
+                        type="checkbox"
                         id={`option-${index}`}
-                        name="single-choice"
+                        name={`multiple-selection-${question.id}`}
                         value={option}
-                        onChange={event => handleOptionsChange(event)}
+                        className="hidden"
+                        checked={question.answer.includes(option)}
+                        readOnly
                     />
-                    <label htmlFor={`option-${index}`}>{option}</label>
+                    <label htmlFor={`option-${index}`} onClick={(e) => e.stopPropagation()} className="flex items-center mb-2 cursor-pointer">{option}</label>
                 </div>
             ))}
         </div>

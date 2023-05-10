@@ -8,7 +8,7 @@ function Questionnaire() {
   const [questionnaire, setQuestionnaire] = useState([
     {
       id: 1,
-      type: 'single-choice',
+      type: 'multiple-choice',
       question: 'Tell us your concerns',
       options: ['Wrinkles and fine lines', 
         'Thin lips', 
@@ -68,22 +68,22 @@ function Questionnaire() {
       // Redirect based on the answers
       // add switch case for each answer combination
       switch (true) {
-        case answers[0] === 'Wrinkles and fine lines' && answers[2] === 'No':
+        case answers[0].includes('Wrinkles and fine lines') && answers[2] === 'No':
           window.location.href = 'https://www.carismaaesthetics.com/chemicalpeelmalta';
           break;
-        case answers[0] === 'Wrinkles and fine lines' && answers[2] === 'Yes':
+        case answers[0].includes('Wrinkles and fine lines') && answers[2] === 'Yes':
           window.location.href = 'https://www.carismaaesthetics.com/wrinklesandfinelines#comp-lg4zufst';
           break;
-        case answers[0] === 'Thin lips':
+        case answers[0].includes('Thin lips'):
             window.location.href = 'https://www.carismaaesthetics.com/thinlips#comp-lg56at0h';
             break;
-        case answers[0] === 'Facial volumising / Contouring' && answers[2] === 'Yes':
+        case answers[0].includes('Facial volumising / Contouring') && answers[2] === 'Yes':
             window.location.href = 'https://www.carismaaesthetics.com/facialvolumisingandcontouring#comp-lg7pph011';
             break;
-        case answers[0] === 'Facial volumising / Contouring' && answers[2] === 'No':
+        case answers[0].includes('Facial volumising / Contouring') && answers[2] === 'No':
             window.location.href = 'https://www.carismaaesthetics.com/facialvolumisingandcontouring#comp-lh0nejhh';
             break;
-        case answers[0] === 'Uneven skin tone/sun damage/rosacea' && answers[1] === 'Combination':
+        case answers[0].includes('Uneven skin tone/sun damage/rosacea') && answers[1] === 'Combination':
         default:
           window.location.href = 'https://www.carismaaesthetics.com';
       }
@@ -117,6 +117,7 @@ function Questionnaire() {
         return (
           <MultipleChoiceQuestion
             question={question}
+            options={question.options}
             setAnswer={handleAnswerChange}
           />
         );
@@ -136,7 +137,7 @@ function Questionnaire() {
   
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-start justify-center lg:pt-16">
+    <div className="min-h-screen bg-gray-100 flex items-start justify-center lg:pt-8">
         <div>
             <ProgressBar progressPercentage={Math.max(5, (currentQuestionIndex / (questionnaire.length - 1)) * 100)}/>
             <div className="bg-white min-h-screen lg:min-h-0 p-6 rounded-lg shadow-lg w-96">
