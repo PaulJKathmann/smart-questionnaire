@@ -3,11 +3,15 @@
 @tailwind utilities;
 
 .custom-button-color {
-  background-color: #B0A68F;
+  background-color: #96B2B2;
+}
+
+.custom-background-color {
+  background-color: #F5EFE4;
 }
 
 .custom-border-color {
-  border-color: #B0A68F;
+  border-color: #96B2B2;
   border-width: 1px;
 }
 

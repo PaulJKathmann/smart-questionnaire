@@ -52,7 +52,7 @@ function MultipleChoiceQuestion({ question, options, setAnswer }) {
                         checked={question.answer.includes(option)}
                         readOnly
                     />
-                    <label htmlFor={`option-${index}`} onClick={(e) => e.stopPropagation()} className="flex items-center mb-2 cursor-pointer">
+                    <label htmlFor={`option-${index}`} onClick={(e) => e.stopPropagation()} className="flex items-center mb-2 cursor-pointer font-roboto">
                     <img className="w-16 h-16 px-4" src={optionIcons[option]} alt={option} />
                     {option}
                     </label>

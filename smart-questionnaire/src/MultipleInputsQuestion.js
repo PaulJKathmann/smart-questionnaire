@@ -15,10 +15,10 @@ function MultipleInputsQuestion({ question, setAnswer }) {
     return (
         <div>
             <div className="relative mb-4">
-                <p className="text-sm text-gray-500 mb-2">We ask for your email in order to share your quiz results and we will add you to our email list to receive 10% off your first treatment purchase, information on our services, special offers, and more.</p>
+                <p className="text-sm text-gray-500 mb-2 font-roboto">We ask for your email in order to share your quiz results and we will add you to our email list to receive 10% off your first treatment purchase, information on our services, special offers, and more.</p>
             </div>
             <div className="relative mb-4">
-                <label htmlFor="first_name" className="absolute text-sm top-0 left-0 ml-3 mt-3 text-gray-500 transition-all duration-200">
+                <label htmlFor="first_name" className="font-roboto absolute text-sm top-0 left-0 ml-3 mt-3 text-gray-500 transition-all duration-200">
                     First Name
                 </label>
                 <input
@@ -36,7 +36,7 @@ function MultipleInputsQuestion({ question, setAnswer }) {
                 />
             </div>
             <div className="relative mb-4">
-                <label htmlFor="name" className="absolute text-sm top-0 left-0 ml-3 mt-3 text-gray-500 transition-all duration-200">
+                <label htmlFor="name" className="font-roboto absolute text-sm top-0 left-0 ml-3 mt-3 text-gray-500 transition-all duration-200">
                     Surname
                 </label>
                 <input
@@ -54,7 +54,7 @@ function MultipleInputsQuestion({ question, setAnswer }) {
                 />
             </div>
             <div className="relative mb-4">
-                <label htmlFor="email" className="absolute text-sm top-0 left-0 ml-3 mt-3 text-gray-500 transition-all duration-200">
+                <label htmlFor="email" className="font-roboto absolute text-sm top-0 left-0 ml-3 mt-3 text-gray-500 transition-all duration-200">
                 Email
                 </label>
                 <input
@@ -73,7 +73,7 @@ function MultipleInputsQuestion({ question, setAnswer }) {
                 />
             </div>
             <div className="relative mb-4">
-                <label htmlFor="phone" className="absolute text-sm top-0 left-0 ml-3 mt-3 text-gray-500 transition-all duration-200">
+                <label htmlFor="phone" className="font-roboto absolute text-sm top-0 left-0 ml-3 mt-3 text-gray-500 transition-all duration-200">
                     Phone
                 </label>
                 <input
@@ -92,7 +92,7 @@ function MultipleInputsQuestion({ question, setAnswer }) {
                 />
             </div>
             <div className="relative mb-4">
-                <p className="text-grey-600/40 text-xs"> You will be subscribed to our email list. See our <a className="underline" href="https://www.carismaaesthetics.com/privacy-policy">Privacy Policy</a> for more information.</p>
+                <p className="text-grey-600/40 text-xs font-roboto"> You will be subscribed to our email list. See our <a className="underline" href="https://www.carismaaesthetics.com/privacy-policy">Privacy Policy</a> for more information.</p>
             </div>
         </div>
     );
