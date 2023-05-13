@@ -18,7 +18,7 @@ function Questionnaire() {
         'Double chin/ jaw line',
         'Dark circles and under-eye bags',
         'Dry/dull dehydrated skin',
-        'Oily skin'
+        'Oily skin',
       ],
       answer: '',
     },
@@ -44,7 +44,16 @@ function Questionnaire() {
         answer: '',
     },
     {
-      id: 5,
+        id: 5,
+        type: 'single-choice',
+        question: 'Your personalised quiz results are now ready!',
+        description: 'For a limited time we are offering free virtual consultations with qualified medical professionals to discuss your concerns, share cutting edge treatment options available to you and answer any of your questions. Look forward to connecting.',
+        options: ['In person consult (€35)', 'Free virtual consult (Newsletter)', 'No thank you'],
+        answer: '',
+    }
+    ,
+    {
+      id: 6,
       type: 'multiple-inputs',
       question: 'Please provide your contact details:',
       answer: { first_name: '', surname: '' , email: '', phone: '' },
@@ -158,25 +167,31 @@ function Questionnaire() {
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-start justify-center lg:pt-8">
-        <div>
+        <div className='w-full lg:w-1/2'>
             <ProgressBar progressPercentage={Math.max(5, (currentQuestionIndex / (questionnaire.length - 1)) * 100)}/>
-            <div className="bg-white min-h-screen lg:min-h-0 p-6 rounded-lg shadow-lg w-96">
+            <div className="bg-white min-h-screen lg:min-h-0 p-6 rounded-lg shadow-lg w-full mx-auto">
             <h1 className="text-2xl font-bold mb-6">
                 {questionnaire[currentQuestionIndex].question}
             </h1>
+                {questionnaire[currentQuestionIndex].description ?  
+                    <div className="flex items-center mb-6">
+                        <p className="text-sm text-gray-500 mb-2">{questionnaire[currentQuestionIndex].description}</p>
+                    </div> 
+                    : null
+                }
             <div className="space-y-4">
                     {renderQuestionComponent(questionnaire[currentQuestionIndex])}
                     <div className="flex justify-between">
                     {currentQuestionIndex > 0 && (
                         <button
                         onClick={handleBackButtonClick}
-                        className="sm:static sm:ml-0 sm:mb-0 custom-border-color h-12 text-grey-600/50 font-semibold py-2 px-6 rounded-md text-sm mr-4 mb-4 whitespace-nowrap"
+                        className="sm:static sm:ml-0 sm:mb-0 custom-border-color h-12 text-grey-600/50 font-semibold py-2 px-6  text-sm mr-4 mb-4 whitespace-nowrap"
                         >
                         &larr; Back
                         </button>
                     )}
                     <button
-                    className="sm:static sm:mr-0 sm:mb-0 w-full py-2 h-12 custom-button-color text-white font-semibold rounded-lg"
+                    className="sm:static sm:mr-0 sm:mb-0 w-full py-2 h-12 custom-button-color text-white font-semibold"
                     onClick={handleSubmit}
                     >
                     {currentQuestionIndex === questionnaire.length - 1 ? 'Submit' : 'Next'}
