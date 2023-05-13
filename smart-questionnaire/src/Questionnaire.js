@@ -38,6 +38,12 @@ function Questionnaire() {
     },
     {
         id: 4,
+        type: 'free-text',
+        question: 'Anything else we should know?',
+        answer: '',
+    },
+    {
+        id: 4,
         type: 'single-choice',
         question: 'Where did you hear about us?',
         options: ['Facebook/Instagram Ad', 'Google', 'Influencer', 'Email', 'Family/Friend', 'Other'],
@@ -170,12 +176,12 @@ function Questionnaire() {
         <div className='w-full lg:w-1/2'>
             <ProgressBar progressPercentage={Math.max(5, (currentQuestionIndex / (questionnaire.length - 1)) * 100)}/>
             <div className="custom-background-color min-h-screen lg:min-h-0 p-6 shadow-lg w-full mx-auto">
-            <h1 className="text-2xl font-bold mb-6 font-custom">
+            <h1 className="text-2xl font-bold mb-6 font-custom custom-text-color">
                 {questionnaire[currentQuestionIndex].question}
             </h1>
                 {questionnaire[currentQuestionIndex].description ?  
                     <div className="flex items-center mb-6">
-                        <p className="text-sm text-gray-500 mb-2 font-roboto">{questionnaire[currentQuestionIndex].description}</p>
+                        <p className="text-sm custom-text-color mb-2 font-roboto">{questionnaire[currentQuestionIndex].description}</p>
                     </div> 
                     : null
                 }
@@ -185,7 +191,7 @@ function Questionnaire() {
                     {currentQuestionIndex > 0 && (
                         <button
                         onClick={handleBackButtonClick}
-                        className="sm:static sm:ml-0 sm:mb-0 custom-border-color h-12 text-grey-600/50 font-roboto-semibold py-2 px-6  text-sm mr-4 mb-4 whitespace-nowrap"
+                        className="sm:static sm:ml-0 sm:mb-0 custom-border-color h-12 custom-text-color font-roboto-semibold py-2 px-6  text-sm mr-4 mb-4 whitespace-nowrap"
                         >
                         &larr; Back
                         </button>
