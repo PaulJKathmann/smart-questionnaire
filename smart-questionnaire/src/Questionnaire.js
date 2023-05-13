@@ -37,10 +37,17 @@ function Questionnaire() {
       answer: '',
     },
     {
-      id: 4,
+        id: 4,
+        type: 'single-choice',
+        question: 'Where did you hear about us?',
+        options: ['Facebook/Instagram Ad', 'Google', 'Influencer', 'Email', 'Family/Friend', 'Other'],
+        answer: '',
+    },
+    {
+      id: 5,
       type: 'multiple-inputs',
       question: 'Please provide your contact details:',
-      answer: { name: '', email: '', phone: '' },
+      answer: { first_name: '', surname: '' , email: '', phone: '' },
     },
   ]);
 
@@ -83,7 +90,20 @@ function Questionnaire() {
         case answers[0].includes('Facial volumising / Contouring') && answers[2] === 'No':
             window.location.href = 'https://www.carismaaesthetics.com/facialvolumisingandcontouring#comp-lh0nejhh';
             break;
-        case answers[0].includes('Uneven skin tone/sun damage/rosacea') && answers[1] === 'Combination':
+        case answers[0].includes('Uneven skin tone/sun damage/rosacea') && answers[2] === 'Yes':
+            window.location.href = 'https://www.carismaaesthetics.com/unevenskintone#comp-lgw7srk6';
+            break;
+        case answers[0].includes('Uneven skin tone/sun damage/rosacea') && answers[2] === 'No':
+            window.location.href = 'https://www.carismaaesthetics.com/hydrafacialmalta';
+            break;
+        case answers[0].includes('Acne and acne scarring') && answers[2] === 'Yes':
+            window.location.href = 'https://www.carismaaesthetics.com/acneandacnescarring#comp-lg7s6sf64';
+            break;
+        case answers[0].includes('Acne and acne scarring') && answers[2] === 'No':
+            window.location.href = 'https://www.carismaaesthetics.com/acneandacnescarring#comp-lg7s6sfk';
+            break;
+        case answers[0].includes('Double chin/ jaw line') && answers[2] === 'Yes':
+            window.location.href = 'https://www.carismaaesthetics.com/doublechinjawline#comp-lg7s6sf64';
         default:
           window.location.href = 'https://www.carismaaesthetics.com';
       }
