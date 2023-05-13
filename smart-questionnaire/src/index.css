@@ -34,3 +34,10 @@
   background-color: #B0A68F;
   border-radius: 5px;
 }
+
+@font-face {
+  font-family: 'Novocentowide-Normal';  /* use the actual font name here */
+  src: url('./assets/fonts/Novecentowide-Normal.otf') format('otf');  /* use the actual font file path and name here */
+  font-weight: 400;  /* adjust as needed */
+  font-style: normal;  /* adjust as needed */
+}
