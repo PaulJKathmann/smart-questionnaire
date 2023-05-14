@@ -47,7 +47,7 @@ function Questionnaire() {
         id: 4,
         type: 'single-choice',
         question: 'Where did you hear about us?',
-        options: ['Facebook/Instagram Ad', 'Google', 'Influencer', 'Email', 'Family/Friend', 'Other'],
+        options: ['Fb/Insta Ad', 'Google', 'Influencer', 'Email', 'Family/Friend', 'Other'],
         answer: '',
     },
     {
@@ -185,7 +185,7 @@ function Questionnaire() {
         <div className='w-full lg:w-1/2'>
             <ProgressBar progressPercentage={Math.max(5, (currentQuestionIndex / (questionnaire.length - 1)) * 100)}/>
             <div className="custom-background-color min-h-screen p-1 lg:min-h-0 shadow-lg w-full mx-auto">
-            <h1 className="text-2xl font-bold mb-6 font-custom custom-text-color">
+            <h1 className="text-2xl font-bold mb-4 mt-2 font-custom custom-text-color">
                 {questionnaire[currentQuestionIndex].question}
             </h1>
                 {questionnaire[currentQuestionIndex].description ?  
