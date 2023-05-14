@@ -1,6 +1,6 @@
 import React from "react";
 
-function MultipleInputsQuestion({ question, setAnswer }) {
+function MultipleInputsQuestion({ question, setAnswer, setShowError }) {
     const inputFocus = (e) => {
         e.target.previousElementSibling.classList.remove('mt-3', 'text-sm');
         e.target.previousElementSibling.classList.add('text-[9px]', 'mt-1');

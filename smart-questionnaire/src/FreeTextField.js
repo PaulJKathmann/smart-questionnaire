@@ -7,7 +7,7 @@ function FreeTextField({ question, setAnswer }) {
                     type="text"
                     id="additional_input"
                     onChange={(e) => setAnswer(question.id, e.target.value)}
-                    className="border-2 border-gray-200 rounded p-2 w-full h-24 focus:outline-none focus:custom-border-color"
+                    className="border-2 border-gray-200 p-2 w-full h-24 custom-text-color focus:outline-none focus:custom-border-color"
                     placeholder="Type here..."
                     rows='6'
                 />

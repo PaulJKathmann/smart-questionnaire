@@ -1,11 +1,6 @@
 import React from "react";
 
-function SingleChoiceQuestion({ question, options, setAnswer, setShowError }) {
-    const handleClick = (id, value) => {
-        setAnswer(id, value);
-        setShowError(false);
-    };
-
+function ConsultationQuestion({ question, options, setAnswer }) {
     return (
         <div className="grid grid-cols-2 gap-1">
           {options.map((option, index) => (
@@ -14,7 +9,7 @@ function SingleChoiceQuestion({ question, options, setAnswer, setShowError }) {
                   ? "custom-border-color border-2 choice-selected"
                   : "border-gray-200 border custom-text-color"
               } p-4 bg-white cursor-pointer transition-all`}
-              onClick={() => handleClick(question.id, option)}
+              onClick={() => setAnswer(question.id, option)}
               >
                 <div key={index} className="flex items-center">
                     <input
@@ -34,4 +29,4 @@ function SingleChoiceQuestion({ question, options, setAnswer, setShowError }) {
       );
 }
 
-export default SingleChoiceQuestion;
+export default ConsultationQuestion;

@@ -14,7 +14,7 @@ import {ReactComponent as IconOilySkin} from "./assets/icons/OilySkin.svg";
 
 
 
-function MultipleChoiceQuestion({ question, options, setAnswer }) {
+function MultipleChoiceQuestion({ question, options, setAnswer, setShowError}) {
     const optionIcons = {
         'Wrinkles': IconWrinkles,
         'Thin lips': IconThinLips,
@@ -28,6 +28,7 @@ function MultipleChoiceQuestion({ question, options, setAnswer }) {
     };
     const handleOptionsChange = (option) => {
         // if the option is already selected, remove it from the array
+        setShowError(false);
         if (question.answer.includes(option)) {
             setAnswer(question.id, question.answer.filter((o) => o !== option)
             );
@@ -55,10 +56,10 @@ function MultipleChoiceQuestion({ question, options, setAnswer }) {
                         checked={question.answer.includes(option)}
                         readOnly
                     />
-                    <Icon className={`w-16 h-16 px-4 
+                    <Icon className={`w-8 h-8 
                         ${question.answer.includes(option) ? "icon-selected" : "current-color"}`}
                          alt={option} />
-                    <label htmlFor={`option-${index}`} onClick={(e) => e.stopPropagation()} className="text-sm flex items-center mb-2 cursor-pointer font-roboto">
+                    <label htmlFor={`option-${index}`} onClick={(e) => e.stopPropagation()} className="text-sm flex items-center my-2 cursor-pointer font-roboto">
                     {option}
                     </label>
                 </div>

@@ -31,14 +31,7 @@ function Questionnaire() {
       answer: '',
     },
     {
-      id: 3,
-      type: 'single-choice',
-      question: 'Are you comfortable with needles?',
-      options: ['Yes', 'No'],
-      answer: '',
-    },
-    {
-        id: 4,
+        id: 3,
         type: 'free-text',
         question: 'Anything else we should know?',
         answer: '',
@@ -67,22 +60,15 @@ function Questionnaire() {
     },
   ]);
 
-
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [showError, setShowError] = useState(false);
 
   const handleSubmit = () => {
-    if (questionnaire[currentQuestionIndex].answer === '') {
-      alert('Please select an answer before proceeding.');
-      return;
-    } else if ((currentQuestionIndex === questionnaire.length - 1) && questionnaire[currentQuestionIndex].answer.email === '') {
-      alert('Please enter your email address.');
-      return;
-    } else if ((currentQuestionIndex === questionnaire.length - 1) && questionnaire[currentQuestionIndex].answer.name === '') {
-        alert('Please enter your name.');
+    if (currentQuestionIndex !== 2 && !questionnaire[currentQuestionIndex].answer) {
+        setShowError(true);
         return;
-    } else if ((currentQuestionIndex === questionnaire.length - 1) && questionnaire[currentQuestionIndex].answer.phone === '') {
-        alert('Please enter your phone number.');
-        return;
+    } else {
+        setShowError(false);
     }
     if (currentQuestionIndex < questionnaire.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
@@ -147,6 +133,7 @@ function Questionnaire() {
                 question={question}
                 options={question.options}
                 setAnswer={handleAnswerChange}
+                setShowError={setShowError}
             />
             );
         case 'multiple-choice':
@@ -155,6 +142,7 @@ function Questionnaire() {
                 question={question}
                 options={question.options}
                 setAnswer={handleAnswerChange}
+                setShowError={setShowError}
             />
             );
         case 'multiple-inputs':
@@ -164,6 +152,7 @@ function Questionnaire() {
                 question={question}
                 options={question.options}
                 setAnswer={handleAnswerChange}
+                setShowError={setShowError}
             />
             );
         case 'free-text':
@@ -172,6 +161,7 @@ function Questionnaire() {
                 question={question}
                 options={question.options}
                 setAnswer={handleAnswerChange}
+                setShowError={setShowError}
             />
             );
         default:
@@ -185,7 +175,7 @@ function Questionnaire() {
         <div className='w-full lg:w-1/2'>
             <ProgressBar progressPercentage={Math.max(5, (currentQuestionIndex / (questionnaire.length - 1)) * 100)}/>
             <div className="custom-background-color min-h-screen p-1 lg:min-h-0 shadow-lg w-full mx-auto">
-            <h1 className="text-2xl font-bold mb-4 mt-2 font-custom custom-text-color">
+            <h1 className="text-2xl mb-4 mt-2 font-custom custom-text-color">
                 {questionnaire[currentQuestionIndex].question}
             </h1>
                 {questionnaire[currentQuestionIndex].description ?  
@@ -196,6 +186,7 @@ function Questionnaire() {
                 }
             <div className="space-y-4">
                     {renderQuestionComponent(questionnaire[currentQuestionIndex])}
+                    {showError && <p className="text-red-500">Please select an answer and try again</p>}
                     <div className="flex justify-between">
                     {currentQuestionIndex > 0 && (
                         <button
