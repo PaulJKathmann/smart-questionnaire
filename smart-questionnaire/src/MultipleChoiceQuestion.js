@@ -35,13 +35,13 @@ function MultipleChoiceQuestion({ question, options, setAnswer }) {
         }
     };
     return (
-        <div className="grid grid-cols-3 gap-1">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-1">
             {options.map((option, index) => (
                 <div key={index} className={`${
                     question.answer.includes(option)
                       ? "custom-border-color border-2"
                       : "border-gray-200 border"
-                  } p-4 bg-white cursor-pointer transition-all`}
+                  } p-4 bg-white cursor-pointer transition-all flex flex-col items-center justify-center`}
                   onClick={() => handleOptionsChange(option)}>
                     <input  
                         type="checkbox"
@@ -52,8 +52,8 @@ function MultipleChoiceQuestion({ question, options, setAnswer }) {
                         checked={question.answer.includes(option)}
                         readOnly
                     />
-                    <label htmlFor={`option-${index}`} onClick={(e) => e.stopPropagation()} className="flex items-center mb-2 cursor-pointer custom-text-color font-roboto">
                     <img className="w-16 h-16 px-4" src={optionIcons[option]} alt={option} />
+                    <label htmlFor={`option-${index}`} onClick={(e) => e.stopPropagation()} className="flex items-center mb-2 cursor-pointer custom-text-color font-roboto">
                     {option}
                     </label>
                 </div>
