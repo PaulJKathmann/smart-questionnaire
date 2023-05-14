@@ -58,7 +58,7 @@ function MultipleChoiceQuestion({ question, options, setAnswer }) {
                     <Icon className={`w-16 h-16 px-4 
                         ${question.answer.includes(option) ? "icon-selected" : "current-color"}`}
                          alt={option} />
-                    <label htmlFor={`option-${index}`} onClick={(e) => e.stopPropagation()} className="flex items-center mb-2 cursor-pointer font-roboto">
+                    <label htmlFor={`option-${index}`} onClick={(e) => e.stopPropagation()} className="text-sm flex items-center mb-2 cursor-pointer font-roboto">
                     {option}
                     </label>
                 </div>
