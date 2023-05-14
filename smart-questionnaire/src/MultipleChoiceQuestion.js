@@ -1,13 +1,14 @@
 import React, {useState} from "react";
-import IconWrinkles from "./assets/icons/Wrinkles.svg";
-import IconThinLips from "./assets/icons/ThinLips.svg";
-import IconFacialVolumising from "./assets/icons/FacialVolumising.svg";
-import IconUnevenSkinTone from "./assets/icons/UnevenSkinTone.svg";
-import IconAcne from "./assets/icons/Acne.svg";
-import IconDoubleChin from "./assets/icons/DoubleChin.svg";
-import IconDarkCircles from "./assets/icons/DarkCircles.svg";
-import IconDrySkin from "./assets/icons/DrySkin.svg";
-import IconOilySkin from "./assets/icons/OilySkin.svg";
+import {ReactComponent as IconWrinkles} from "./assets/icons/Wrinkles.svg";
+import {ReactComponent as IconThinLips} from "./assets/icons/ThinLips.svg";
+import {ReactComponent as IconFacialVolumising} from "./assets/icons/FacialVolumising.svg";
+import {ReactComponent as IconUnevenSkinTone} from "./assets/icons/UnevenSkinTone.svg";
+import {ReactComponent as IconAcne} from "./assets/icons/Acne.svg";
+import {ReactComponent as IconDoubleChin} from "./assets/icons/DoubleChin.svg";
+import {ReactComponent as IconDarkCircles} from "./assets/icons/DarkCircles.svg";
+import {ReactComponent as IconDrySkin} from "./assets/icons/DrySkin.svg";
+import {ReactComponent as IconOilySkin} from "./assets/icons/OilySkin.svg";
+
 
 
 
@@ -36,11 +37,13 @@ function MultipleChoiceQuestion({ question, options, setAnswer }) {
     };
     return (
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-1">
-            {options.map((option, index) => (
+            {options.map((option, index) => {
+                const Icon = optionIcons[option];
+                return (
                 <div key={index} className={`${
                     question.answer.includes(option)
-                      ? "custom-border-color border-2"
-                      : "border-gray-200 border"
+                      ? "custom-border-color border-2 choice-selected"
+                      : "border-gray-200 border custom-text-color"
                   } p-4 bg-white cursor-pointer transition-all flex flex-col items-center justify-center`}
                   onClick={() => handleOptionsChange(option)}>
                     <input  
@@ -52,41 +55,17 @@ function MultipleChoiceQuestion({ question, options, setAnswer }) {
                         checked={question.answer.includes(option)}
                         readOnly
                     />
-                    <img className="w-16 h-16 px-4" src={optionIcons[option]} alt={option} />
-                    <label htmlFor={`option-${index}`} onClick={(e) => e.stopPropagation()} className="flex items-center mb-2 cursor-pointer custom-text-color font-roboto">
+                    <Icon className={`w-16 h-16 px-4 
+                        ${question.answer.includes(option) ? "icon-selected" : "current-color"}`}
+                         alt={option} />
+                    <label htmlFor={`option-${index}`} onClick={(e) => e.stopPropagation()} className="flex items-center mb-2 cursor-pointer font-roboto">
                     {option}
                     </label>
                 </div>
-            ))}
+                )
+            })};
         </div>
     );
 }
 
 export default MultipleChoiceQuestion;
-
-/*
-<div className="mb-4">
-            {question.options.map((option) => (
-              <div key={option} className={`${
-                questionnaire[currentQuestionIndex].answer === option
-                  ? "border-blue-500 border-2"
-                  : "border-gray-200 border"
-              } p-4 rounded-lg mb-4 bg-white cursor-pointer hover:border-blue-300 transition-all`}
-              onClick={() =>
-                handleAnswerChange(questionnaire[currentQuestionIndex].id, option)
-              }
-              >
-                <div className="flex items-center">
-                  <input 
-                  type="radio" 
-                  name="option" 
-                  value={option} 
-                  className="hidden"
-                  checked={questionnaire[currentQuestionIndex].answer === option}
-                  />
-                  <label htmlFor={option} className="flex items-center mb-2">{option}</label>
-              </div>
-            </div>
-        ))}
-    </div>
-*/

@@ -10,6 +10,15 @@
   background-color: #F5EFE4;
 }
 
+.choice-selected {
+  background-color: #96B2B2;
+  color: #fff;
+}
+
+.icon-selected {
+  color: #96B2B2;
+}
+
 .custom-border-color {
   border-color: #96B2B2;
   border-width: 1px;
