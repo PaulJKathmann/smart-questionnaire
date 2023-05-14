@@ -16,14 +16,14 @@ import {ReactComponent as IconOilySkin} from "./assets/icons/OilySkin.svg";
 
 function MultipleChoiceQuestion({ question, options, setAnswer }) {
     const optionIcons = {
-        'Wrinkles and fine lines': IconWrinkles,
+        'Wrinkles': IconWrinkles,
         'Thin lips': IconThinLips,
-        'Facial volumising / Contouring': IconFacialVolumising,
-        'Uneven skin tone/sun damage/rosacea': IconUnevenSkinTone,
-        'Acne and acne scarring': IconAcne,
-        'Double chin/ jaw line': IconDoubleChin,
-        'Dark circles and under-eye bags': IconDarkCircles,
-        'Dry/dull dehydrated skin': IconDrySkin,
+        'Facial volumising': IconFacialVolumising,
+        'Uneven skin tone': IconUnevenSkinTone,
+        'Acne': IconAcne,
+        'Double chin': IconDoubleChin,
+        'Dark circles': IconDarkCircles,
+        'Dry skin': IconDrySkin,
         'Oily skin': IconOilySkin,
     };
     const handleOptionsChange = (option) => {
@@ -63,7 +63,7 @@ function MultipleChoiceQuestion({ question, options, setAnswer }) {
                     </label>
                 </div>
                 )
-            })};
+            })}
         </div>
     );
 }

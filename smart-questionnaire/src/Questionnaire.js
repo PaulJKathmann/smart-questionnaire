@@ -3,6 +3,7 @@ import SingleChoiceQuestion from './SingleChoiceQuestion';
 import MultipleChoiceQuestion from './MultipleChoiceQuestion';
 import MultipleInputsQuestion from './MultipleInputsQuestion';
 import ProgressBar from './ProgressBar';
+import FreeTextField from './FreeTextField';
 
 function Questionnaire() {
   const [questionnaire, setQuestionnaire] = useState([
@@ -10,14 +11,14 @@ function Questionnaire() {
       id: 1,
       type: 'multiple-choice',
       question: 'Tell us your concerns',
-      options: ['Wrinkles and fine lines', 
+      options: ['Wrinkles', 
         'Thin lips', 
-        'Facial volumising / Contouring', 
-        'Uneven skin tone/sun damage/rosacea', 
-        'Acne and acne scarring', 
-        'Double chin/ jaw line',
-        'Dark circles and under-eye bags',
-        'Dry/dull dehydrated skin',
+        'Facial volumising', 
+        'Uneven skin tone', 
+        'Acne', 
+        'Double chin',
+        'Dark circles',
+        'Dry skin',
         'Oily skin',
       ],
       answer: '',
@@ -140,31 +141,39 @@ function Questionnaire() {
 
   function renderQuestionComponent(question) {
     switch (question.type) {
-      case 'single-choice':
-        return (
-          <SingleChoiceQuestion
-            question={question}
-            options={question.options}
-            setAnswer={handleAnswerChange}
-          />
-        );
-      case 'multiple-choice':
-        return (
-          <MultipleChoiceQuestion
-            question={question}
-            options={question.options}
-            setAnswer={handleAnswerChange}
-          />
-        );
-      case 'multiple-inputs':
-        return (
-          <MultipleInputsQuestion 
-            className="text-left"
-            question={question}
-            options={question.options}
-            setAnswer={handleAnswerChange}
-          />
-        );
+        case 'single-choice':
+            return (
+            <SingleChoiceQuestion
+                question={question}
+                options={question.options}
+                setAnswer={handleAnswerChange}
+            />
+            );
+        case 'multiple-choice':
+            return (
+            <MultipleChoiceQuestion
+                question={question}
+                options={question.options}
+                setAnswer={handleAnswerChange}
+            />
+            );
+        case 'multiple-inputs':
+            return (
+            <MultipleInputsQuestion 
+                className="text-left"
+                question={question}
+                options={question.options}
+                setAnswer={handleAnswerChange}
+            />
+            );
+        case 'free-text':
+            return (
+            <FreeTextField 
+                question={question}
+                options={question.options}
+                setAnswer={handleAnswerChange}
+            />
+            );
         default:
             return null;
     }
@@ -175,7 +184,7 @@ function Questionnaire() {
     <div className="min-h-screen bg-gray-100 flex items-start justify-center lg:pt-8">
         <div className='w-full lg:w-1/2'>
             <ProgressBar progressPercentage={Math.max(5, (currentQuestionIndex / (questionnaire.length - 1)) * 100)}/>
-            <div className="custom-background-color min-h-screen lg:min-h-0 p-6 shadow-lg w-full mx-auto">
+            <div className="custom-background-color min-h-screen p-1 lg:min-h-0 shadow-lg w-full mx-auto">
             <h1 className="text-2xl font-bold mb-6 font-custom custom-text-color">
                 {questionnaire[currentQuestionIndex].question}
             </h1>

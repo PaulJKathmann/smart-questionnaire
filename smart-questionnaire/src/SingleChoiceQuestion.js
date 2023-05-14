@@ -6,8 +6,8 @@ function SingleChoiceQuestion({ question, options, setAnswer }) {
           {options.map((option, index) => (
             <div key={index} className={`${
                 question.answer === option
-                  ? "custom-border-color border-2"
-                  : "border-gray-200 border"
+                  ? "custom-border-color border-2 choice-selected"
+                  : "border-gray-200 border custom-text-color"
               } p-4 bg-white cursor-pointer transition-all`}
               onClick={() => setAnswer(question.id, option)}
               >
@@ -21,7 +21,7 @@ function SingleChoiceQuestion({ question, options, setAnswer }) {
                         onChange={event => setAnswer(question.id, event.target.value)}
                         checked={question.answer === option}
                     />
-                <label htmlFor={`option-${index}`} className="flex items-center mb-2 custom-text-color font-roboto">{option}</label>
+                <label htmlFor={`option-${index}`} className="flex items-center mb-2 font-roboto">{option}</label>
                 </div>
             </div>
           ))}
