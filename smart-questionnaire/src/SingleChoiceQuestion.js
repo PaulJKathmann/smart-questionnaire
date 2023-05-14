@@ -1,9 +1,14 @@
 import React from "react";
 
-function SingleChoiceQuestion({ question, options, setAnswer, setShowError }) {
+function SingleChoiceQuestion({ question, options, setAnswer, setError }) {
     const handleClick = (id, value) => {
-        setAnswer(id, value);
-        setShowError(false);
+        if (question.answer === value) {
+          setAnswer(id, "");
+        }
+        else {
+            setAnswer(id, value);
+            setError(null);
+        }
     };
 
     return (

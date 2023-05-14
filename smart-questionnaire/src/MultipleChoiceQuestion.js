@@ -14,7 +14,7 @@ import {ReactComponent as IconOilySkin} from "./assets/icons/OilySkin.svg";
 
 
 
-function MultipleChoiceQuestion({ question, options, setAnswer, setShowError}) {
+function MultipleChoiceQuestion({ question, options, setAnswer, setError}) {
     const optionIcons = {
         'Wrinkles': IconWrinkles,
         'Thin lips': IconThinLips,
@@ -28,12 +28,12 @@ function MultipleChoiceQuestion({ question, options, setAnswer, setShowError}) {
     };
     const handleOptionsChange = (option) => {
         // if the option is already selected, remove it from the array
-        setShowError(false);
         if (question.answer.includes(option)) {
             setAnswer(question.id, question.answer.filter((o) => o !== option)
             );
         } else {
             setAnswer(question.id, [...question.answer, option]);
+            setError(null);
         }
     };
     return (
