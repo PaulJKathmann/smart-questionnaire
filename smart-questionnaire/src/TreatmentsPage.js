@@ -83,7 +83,7 @@ function TreatmentsPage() {
                         return (
                             <div key={index}>
                                 <div className="mb-4 mx-auto">
-                                        <h2 className='font-custom text-1xl mt-8 '>
+                                        <h2 className='font-custom custom-text-color text-1xl mt-8 '>
                                         Your handpicked treatments for <br></br> <b>{concern}</b></h2>
                                 </div>
                                 <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-center justify-around content-around gap-2 mb-2'>
