@@ -4,6 +4,8 @@ import MultipleChoiceQuestion from './MultipleChoiceQuestion';
 import MultipleInputsQuestion from './MultipleInputsQuestion';
 import ProgressBar from './ProgressBar';
 import FreeTextField from './FreeTextField';
+import { useNavigate } from 'react-router-dom';
+
 
 function Questionnaire() {
   const [questionnaire, setQuestionnaire] = useState([
@@ -62,6 +64,8 @@ function Questionnaire() {
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
+
 
     const validateEmail = (email) => {
         // Regular expression for email validation
@@ -99,42 +103,11 @@ function Questionnaire() {
     if (currentQuestionIndex < questionnaire.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
-      const answers = questionnaire.map((q) => q.answer);
+    const answers = questionnaire.map((q) => q.answer);
       // Redirect based on the answers
       // add switch case for each answer combination
-      switch (true) {
-        case answers[0].includes('Wrinkles and fine lines') && answers[2] === 'No':
-          window.location.href = 'https://www.carismaaesthetics.com/chemicalpeelmalta';
-          break;
-        case answers[0].includes('Wrinkles and fine lines') && answers[2] === 'Yes':
-          window.location.href = 'https://www.carismaaesthetics.com/wrinklesandfinelines#comp-lg4zufst';
-          break;
-        case answers[0].includes('Thin lips'):
-            window.location.href = 'https://www.carismaaesthetics.com/thinlips#comp-lg56at0h';
-            break;
-        case answers[0].includes('Facial volumising / Contouring') && answers[2] === 'Yes':
-            window.location.href = 'https://www.carismaaesthetics.com/facialvolumisingandcontouring#comp-lg7pph011';
-            break;
-        case answers[0].includes('Facial volumising / Contouring') && answers[2] === 'No':
-            window.location.href = 'https://www.carismaaesthetics.com/facialvolumisingandcontouring#comp-lh0nejhh';
-            break;
-        case answers[0].includes('Uneven skin tone/sun damage/rosacea') && answers[2] === 'Yes':
-            window.location.href = 'https://www.carismaaesthetics.com/unevenskintone#comp-lgw7srk6';
-            break;
-        case answers[0].includes('Uneven skin tone/sun damage/rosacea') && answers[2] === 'No':
-            window.location.href = 'https://www.carismaaesthetics.com/hydrafacialmalta';
-            break;
-        case answers[0].includes('Acne and acne scarring') && answers[2] === 'Yes':
-            window.location.href = 'https://www.carismaaesthetics.com/acneandacnescarring#comp-lg7s6sf64';
-            break;
-        case answers[0].includes('Acne and acne scarring') && answers[2] === 'No':
-            window.location.href = 'https://www.carismaaesthetics.com/acneandacnescarring#comp-lg7s6sfk';
-            break;
-        case answers[0].includes('Double chin/ jaw line') && answers[2] === 'Yes':
-            window.location.href = 'https://www.carismaaesthetics.com/doublechinjawline#comp-lg7s6sf64';
-        default:
-          window.location.href = 'https://www.carismaaesthetics.com';
-      }
+    localStorage.setItem('questionnaireData', JSON.stringify(answers));
+    window.top.location.href = 'https://www.carismaaesthetics.com/quiz-results';
     }
   };
   
@@ -211,7 +184,7 @@ function Questionnaire() {
                 }
             <div className="space-y-4">
                     {renderQuestionComponent(questionnaire[currentQuestionIndex])}
-                    {error && <p className="text-red-500">{error}</p>}
+                    {error && <p className="custom-text-color">{error}</p>}
                     <div className="flex justify-between">
                     {currentQuestionIndex > 0 && (
                         <button
