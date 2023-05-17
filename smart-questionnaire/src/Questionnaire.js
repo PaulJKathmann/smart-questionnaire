@@ -4,7 +4,7 @@ import MultipleChoiceQuestion from './MultipleChoiceQuestion';
 import MultipleInputsQuestion from './MultipleInputsQuestion';
 import ProgressBar from './ProgressBar';
 import FreeTextField from './FreeTextField';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 
 function Questionnaire() {
@@ -62,10 +62,9 @@ function Questionnaire() {
     },
   ]);
 
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [error, setError] = useState(null);
-  const navigate = useNavigate();
-
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+    const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     const validateEmail = (email) => {
         // Regular expression for email validation
@@ -79,50 +78,51 @@ function Questionnaire() {
         return re.test(phone);
     };
 
-  const handleSubmit = () => {
-    if (currentQuestionIndex !== 2 && !questionnaire[currentQuestionIndex].answer) {
-        setError('Please select an answer and try again');
-        return;
-    } else {
-        setError(null);
-    }
-    if (currentQuestionIndex === 5) {
-        if (!validateEmail(questionnaire[5].answer.email)) {
-            setError('Please enter a valid email address.');
+    const handleSubmit = () => {
+        if (currentQuestionIndex !== 2 && !questionnaire[currentQuestionIndex].answer) {
+            setError('Please select an answer and try again');
             return;
+        } else {
+            setError(null);
         }
-        if (!validatePhone(questionnaire[5].answer.phone)) {
-            setError('Please enter a valid phone number.');
-            return;
+        if (currentQuestionIndex === 5) {
+            if (!validateEmail(questionnaire[5].answer.email)) {
+                setError('Please enter a valid email address.');
+                return;
+            }
+            if (!validatePhone(questionnaire[5].answer.phone)) {
+                setError('Please enter a valid phone number.');
+                return;
+            }
+            if (!questionnaire[5].answer.first_name || !questionnaire[5].answer.surname) {
+                setError("Please enter your name.");
+                return;
+            }
         }
-        if (!questionnaire[5].answer.first_name || !questionnaire[5].answer.surname) {
-            setError("Please enter your name.");
-            return;
+        if (currentQuestionIndex < questionnaire.length - 1) {
+        setCurrentQuestionIndex(currentQuestionIndex + 1);
+        } else {
+        const answers = questionnaire.map((q) => q.answer);
+        // Redirect based on the answers
+        // add switch case for each answer combination
+        localStorage.setItem('questionnaireData', JSON.stringify(answers));
+        navigate('/treatments');
+        //window.top.location.href = 'https://www.carismaaesthetics.com/quiz-results';
         }
     }
-    if (currentQuestionIndex < questionnaire.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-    } else {
-    const answers = questionnaire.map((q) => q.answer);
-      // Redirect based on the answers
-      // add switch case for each answer combination
-    localStorage.setItem('questionnaireData', JSON.stringify(answers));
-    window.top.location.href = 'https://www.carismaaesthetics.com/quiz-results';
-    }
-  };
   
 
-  const handleAnswerChange = (id, value) => {
-    setQuestionnaire((prev) =>
-      prev.map((q) => (q.id === id ? { ...q, answer: value } : q))
-    );
-  };
+    const handleAnswerChange = (id, value) => {
+        setQuestionnaire((prev) =>
+        prev.map((q) => (q.id === id ? { ...q, answer: value } : q))
+        );
+    };
 
-  const handleBackButtonClick = () => {
-    if (currentQuestionIndex > 0) {
-      setCurrentQuestionIndex(currentQuestionIndex - 1);
-    }
-  };
+    const handleBackButtonClick = () => {
+        if (currentQuestionIndex > 0) {
+        setCurrentQuestionIndex(currentQuestionIndex - 1);
+        }
+    };
 
   function renderQuestionComponent(question) {
     switch (question.type) {
