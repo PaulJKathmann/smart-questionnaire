@@ -72,19 +72,19 @@ function TreatmentsPage() {
     return (
         <div className='min-h-screen flex items-start justify-center lg:pt-8'>
             <div className="min-h-screen p-1 lg:min-h-0 w-full">
-                <div className='w-full mx-auto max-w-2xl bg-white shadow-lg p-1 lg:p-10'>
+                <div className='w-full mx-auto max-w-2xl bg-white p-1 lg:p-10'>
                     <h2 className='font-custom custom-text-color text-center text-1xl font-semibold mb-4'>Recommendations</h2>
                     <h1 className='font-custom custom-text-color text-center text-3xl font-semibold mb-4'>Made for {firstName}</h1>
                     <div className='border border-gray-100 mt-6'> </div>
                 </div>
-                <div className='w-full mx-auto max-w-2xl bg-white shadow-lg p-2 lg:p-'>
+                <div className='w-full mx-auto max-w-2xl bg-white p-2 lg:p-'>
                     {data && data[0] && data[0].map((concern, index) => {
                         const thumbnails = treatmentsMap[concern];
                         return (
                             <div key={index}>
                                 <div className="mb-4 mx-auto">
                                         <h2 className='font-custom custom-text-color text-1xl mt-8 '>
-                                        Your handpicked treatments for <br></br> <b>{concern}</b></h2>
+                                        Suggested treatments for <br></br> <b>{concern}</b></h2>
                                 </div>
                                 <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-center justify-around content-around gap-2 mb-2'>
                                     {thumbnails.map(({image, link}, index) => {

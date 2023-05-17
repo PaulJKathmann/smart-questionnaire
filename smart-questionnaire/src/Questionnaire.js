@@ -64,6 +64,7 @@ function Questionnaire() {
 
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     const validateEmail = (email) => {
         // Regular expression for email validation
@@ -105,7 +106,8 @@ function Questionnaire() {
         // Redirect based on the answers
         // add switch case for each answer combination
         localStorage.setItem('questionnaireData', JSON.stringify(answers));
-        window.top.location.href = 'https://www.carismaaesthetics.com/quiz-results';
+        navigate('/treatments');
+        //window.top.location.href = 'https://www.carismaaesthetics.com/quiz-results';
         }
     }
   
