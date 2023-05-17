@@ -73,8 +73,8 @@ function TreatmentsPage() {
         <div className='min-h-screen flex items-start justify-center lg:pt-8'>
             <div className="min-h-screen p-1 lg:min-h-0 w-full">
                 <div className='w-full mx-auto max-w-2xl bg-white shadow-lg p-1 lg:p-10'>
-                    <h2 className='font-custom text-center text-1xl font-semibold mb-4'>Recommendations</h2>
-                    <h1 className='font-custom text-center text-3xl font-semibold mb-4'>Made for {firstName}</h1>
+                    <h2 className='font-custom custom-text-color text-center text-1xl font-semibold mb-4'>Recommendations</h2>
+                    <h1 className='font-custom custom-text-color text-center text-3xl font-semibold mb-4'>Made for {firstName}</h1>
                     <div className='border border-gray-100 mt-6'> </div>
                 </div>
                 <div className='w-full mx-auto max-w-2xl bg-white shadow-lg p-2 lg:p-'>
