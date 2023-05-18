@@ -36,6 +36,7 @@ function MultipleChoiceQuestion({ question, options, setAnswer, setError}) {
             setError(null);
         }
     };
+
     return (
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-1">
             {options.map((option, index) => {
@@ -59,7 +60,7 @@ function MultipleChoiceQuestion({ question, options, setAnswer, setError}) {
                     <Icon className={`w-8 h-8 
                         ${question.answer.includes(option) ? "icon-selected" : "current-color"}`}
                          alt={option} />
-                    <label htmlFor={`option-${index}`} onClick={(e) => e.stopPropagation()} className="text-sm flex items-center my-2 cursor-pointer font-roboto">
+                    <label htmlFor={`option-${index}`} onClick={(e) => e.stopPropagation()} className="text-sm flex items-center my-2 cursor-pointer font-custom">
                     {option}
                     </label>
                 </div>

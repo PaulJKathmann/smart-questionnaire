@@ -15,11 +15,11 @@ function MultipleInputsQuestion({ question, setAnswer, setShowError }) {
     return (
         <div>
             <div className="relative mb-4">
-                <p className="text-sm custom-text-color mb-2 font-roboto">We ask for your email in order to share your quiz results and we will add you to our email list to receive 10% off your first treatment purchase, information on our services, special offers, and more.</p>
+                <p className="text-sm custom-text-color mb-2 font-custom">We ask for your email in order to share your quiz results and we will add you to our email list to receive 10% off your first treatment purchase, information on our services, special offers, and more.</p>
             </div>
         <div className="grid grid-cols-2 gap-1">
             <div className="relative mb-4">
-                <label htmlFor="first_name" className="font-roboto absolute text-sm top-0 left-0 ml-3 mt-3 custom-text-color transition-all duration-200">
+                <label htmlFor="first_name" className="font-custom absolute text-sm top-0 left-0 ml-3 mt-3 custom-text-color transition-all duration-200">
                     First Name
                 </label>
                 <input
@@ -37,7 +37,7 @@ function MultipleInputsQuestion({ question, setAnswer, setShowError }) {
                 />
             </div>
             <div className="relative mb-4">
-                <label htmlFor="name" className="font-roboto absolute text-sm top-0 left-0 ml-3 mt-3 custom-text-color transition-all duration-200">
+                <label htmlFor="name" className="font-custom absolute text-sm top-0 left-0 ml-3 mt-3 custom-text-color transition-all duration-200">
                     Surname
                 </label>
                 <input
@@ -55,7 +55,7 @@ function MultipleInputsQuestion({ question, setAnswer, setShowError }) {
                 />
             </div>
             <div className="relative mb-4">
-                <label htmlFor="email" className="font-roboto absolute text-sm top-0 left-0 ml-3 mt-3 custom-text-color transition-all duration-200">
+                <label htmlFor="email" className="font-custom absolute text-sm top-0 left-0 ml-3 mt-3 custom-text-color transition-all duration-200">
                 Email
                 </label>
                 <input
@@ -74,7 +74,7 @@ function MultipleInputsQuestion({ question, setAnswer, setShowError }) {
                 />
             </div>
             <div className="relative mb-4">
-                <label htmlFor="phone" className="font-roboto absolute text-sm top-0 left-0 ml-3 mt-3 custom-text-color transition-all duration-200">
+                <label htmlFor="phone" className="font-custom absolute text-sm top-0 left-0 ml-3 mt-3 custom-text-color transition-all duration-200">
                     Phone
                 </label>
                 <input
@@ -94,7 +94,7 @@ function MultipleInputsQuestion({ question, setAnswer, setShowError }) {
             </div>
         </div>
             <div className="relative mb-4">
-                <p className="custom-text-color text-xs font-roboto"> You will be subscribed to our email list. See our <a className="underline" href="https://www.carismaaesthetics.com/privacy-policy">Privacy Policy</a> for more information.</p>
+                <p className="custom-text-color text-xs font-custom"> You will be subscribed to our email list. See our <a className="underline" href="https://www.carismaaesthetics.com/privacy-policy">Privacy Policy</a> for more information.</p>
             </div>
         </div>
     );

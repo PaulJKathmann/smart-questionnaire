@@ -15,8 +15,9 @@
   color: #fff;
 }
 
-.icon-selected {
-  color: #96B2B2;
+.icon-selected path, .icon-selected circle {
+  stroke: #FFF !important;
+  color: #FFF !important;
 }
 
 .custom-border-color {

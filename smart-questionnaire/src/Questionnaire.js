@@ -5,6 +5,7 @@ import MultipleInputsQuestion from './MultipleInputsQuestion';
 import ProgressBar from './ProgressBar';
 import FreeTextField from './FreeTextField';
 import { Navigate, useNavigate } from 'react-router-dom';
+import ConsultationQuestion from './ConsultationQuestion';
 
 
 function Questionnaire() {
@@ -34,37 +35,35 @@ function Questionnaire() {
     },
     {
         id: 3,
-        type: 'free-text',
-        question: 'Anything else we should know?',
+        type: 'single-choice',
+        question: 'Where did you hear about us?',
+        options: ['Social Media', 'Google', 'Hotel (website)', 'Corporate partnership', 'Family/Friend', 'Repeat customer' , 'Other'],
         answer: '',
     },
     {
         id: 4,
-        type: 'single-choice',
-        question: 'Where did you hear about us?',
-        options: ['Fb/Insta Ad', 'Google', 'Influencer', 'Email', 'Family/Friend', 'Other'],
+        type: 'consultation-question',
+        question: 'Your personalised quiz results are now ready!',
+        description: 'For a limited time we are offering free virtual consultations with qualified medical professionals to discuss your concerns, share cutting edge treatment options available to you and answer any of your questions. Look forward to connecting.',
+        options: ['In person consult (€35)', 'Free virtual consult (Newsletter)', 'Skip Consultation'],
         answer: '',
     },
     {
-        id: 5,
-        type: 'single-choice',
-        question: 'Your personalised quiz results are now ready!',
-        description: 'For a limited time we are offering free virtual consultations with qualified medical professionals to discuss your concerns, share cutting edge treatment options available to you and answer any of your questions. Look forward to connecting.',
-        options: ['In person consult (€35)', 'Free virtual consult (Newsletter)', 'No thank you'],
-        answer: '',
-    }
-    ,
-    {
-      id: 6,
+      id: 5,
       type: 'multiple-inputs',
       question: 'Please provide your contact details:',
       answer: { first_name: '', surname: '' , email: '', phone: '' },
     },
+    {
+        id: 6,
+        type: 'free-text',
+        question: 'Anything else we should know?',
+        answer: '',
+    }
   ]);
 
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [error, setError] = useState(null);
-    const navigate = useNavigate();
 
     const validateEmail = (email) => {
         // Regular expression for email validation
@@ -79,18 +78,18 @@ function Questionnaire() {
     };
 
     const handleSubmit = () => {
-        if (currentQuestionIndex !== 2 && !questionnaire[currentQuestionIndex].answer) {
+        if (![4, 5].includes(currentQuestionIndex) && !questionnaire[currentQuestionIndex].answer[0]) {
             setError('Please select an answer and try again');
             return;
         } else {
             setError(null);
         }
-        if (currentQuestionIndex === 5) {
-            if (!validateEmail(questionnaire[5].answer.email)) {
+        if (currentQuestionIndex === 4) {
+            if (!validateEmail(questionnaire[4].answer.email)) {
                 setError('Please enter a valid email address.');
                 return;
             }
-            if (!validatePhone(questionnaire[5].answer.phone)) {
+            if (!validatePhone(questionnaire[4].answer.phone)) {
                 setError('Please enter a valid phone number.');
                 return;
             }
@@ -106,8 +105,8 @@ function Questionnaire() {
         // Redirect based on the answers
         // add switch case for each answer combination
         localStorage.setItem('questionnaireData', JSON.stringify(answers));
-        navigate('/treatments');
-        //window.top.location.href = 'https://www.carismaaesthetics.com/quiz-results';
+        // navigate('/treatments');
+        window.top.location.href = 'https://www.carismaaesthetics.com/quiz-results';
         }
     }
   
@@ -162,6 +161,16 @@ function Questionnaire() {
                 setAnswer={handleAnswerChange}
             />
             );
+        case 'consultation-question':
+            return (
+            <ConsultationQuestion
+                question={question}
+                options={question.options}
+                setAnswer={handleAnswerChange}
+                setError={setError}
+                handleSubmit={handleSubmit}
+            />
+            );
         default:
             return null;
     }
@@ -173,12 +182,12 @@ function Questionnaire() {
         <div className='w-full lg:w-1/2'>
             <ProgressBar progressPercentage={Math.max(5, (currentQuestionIndex / (questionnaire.length - 1)) * 100)}/>
             <div className="min-h-screen p-1 lg:min-h-0 w-full mx-auto">
-            <h1 className="text-2xl mb-4 mt-2 font-custom custom-text-color">
+            <h1 className="text-2xl mb-4 mt-4 font-custom custom-text-color">
                 {questionnaire[currentQuestionIndex].question}
             </h1>
                 {questionnaire[currentQuestionIndex].description ?  
                     <div className="flex items-center mb-6">
-                        <p className="text-sm custom-text-color mb-2 font-roboto">{questionnaire[currentQuestionIndex].description}</p>
+                        <p className="text-sm custom-text-color mb-2 font-custom">{questionnaire[currentQuestionIndex].description}</p>
                     </div> 
                     : null
                 }
@@ -189,17 +198,18 @@ function Questionnaire() {
                     {currentQuestionIndex > 0 && (
                         <button
                         onClick={handleBackButtonClick}
-                        className="sm:static sm:ml-0 sm:mb-0 custom-border-color h-12 custom-text-color font-roboto-semibold py-2 px-6  text-sm mr-4 mb-4 whitespace-nowrap"
+                        className="sm:static sm:ml-0 sm:mb-0 custom-border-color h-12 custom-text-color font-custom py-2 px-6  text-sm mr-4 mb-4 whitespace-nowrap"
                         >
                         &larr; Back
                         </button>
                     )}
-                    <button
-                    className="sm:static sm:mr-0 sm:mb-0 w-full py-2 h-12 custom-button-color text-white font-roboto-semibold"
-                    onClick={handleSubmit}
-                    >
-                    {currentQuestionIndex === questionnaire.length - 1 ? 'Submit' : 'Next'}
-                    </button>
+                    {currentQuestionIndex !== 3 && (<button
+                        className="sm:static sm:mr-0 sm:mb-0 w-full py-2 h-12 custom-button-color text-white font-custom"
+                        onClick={handleSubmit}
+                        >
+                        {currentQuestionIndex === questionnaire.length - 1 ? 'Submit' : 'Next'}
+                        </button>
+                    )}
                     </div>
                 </div>
             </div>

@@ -31,7 +31,7 @@ function SingleChoiceQuestion({ question, options, setAnswer, setError }) {
                         onChange={event => setAnswer(question.id, event.target.value)}
                         checked={question.answer === option}
                     />
-                <span className="flex items-center text-sm mb-2 font-roboto">{option}</span>
+                <span className="flex items-center text-sm mb-2 font-custom">{option}</span>
                 </div>
             </div>
           ))}

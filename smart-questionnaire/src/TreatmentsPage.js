@@ -64,8 +64,8 @@ function TreatmentsPage() {
     }, []);
 
     let firstName = 'You'
-    if (data[5]) {
-        firstName = data[5].first_name;
+    if (data[4]) {
+        firstName = data[4].first_name;
     }
 
 
@@ -75,9 +75,18 @@ function TreatmentsPage() {
                 <div className='w-full mx-auto max-w-2xl bg-white p-1 lg:p-10'>
                     <h2 className='font-custom custom-text-color text-center text-1xl font-semibold mb-4'>Recommendations</h2>
                     <h1 className='font-custom custom-text-color text-center text-3xl font-semibold mb-4'>Made for {firstName}</h1>
+                    {data && data[3] === 'In person consult (€35)' ? 
+                    <p className='font-custom custom-text-color'>We have received your contact information and will be reaching out to you soon to schedule your appointment.
+                      <br></br>Below are possible treatments options typically suggested for your skin concerns. Kindly note that every individual is different and we look forward to discussing the best treatment plan 
+                      to address your unique needs. 
+                      </p> : 
+                       <p className='font-custom custom-text-color'>Please find below treatments options tailored to your skin concerns.
+                       <br></br>Kindly note that every individual is different and we highly recommend booking a consultation with one of our qualified practitioners to discuss what treatments would best address your unique needs.
+                       </p>
+                    }
                     <div className='border border-gray-100 mt-6'> </div>
                 </div>
-                <div className='w-full mx-auto max-w-2xl bg-white p-2 lg:p-'>
+                <div className='w-full mx-auto max-w-3xl bg-white p-2 lg:p-4'>
                     {data && data[0] && data[0].map((concern, index) => {
                         const thumbnails = treatmentsMap[concern];
                         return (
@@ -91,7 +100,7 @@ function TreatmentsPage() {
                                         return (
                                             <div className="flex justify-center items-center">
                                                 <a href={link} target="_blank" rel="noopener noreferrer">
-                                                    <img key={index} src={image} className="w-48 h-48 m-2 space-around" />
+                                                    <img key={index} src={image} className="w-48 h-48 m-2 transform hover:scale-110 transition-transform duration-200 space-around" />
                                                 </a>
                                             </div>
                                         )
