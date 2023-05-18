@@ -93,7 +93,7 @@ function Questionnaire() {
                 setError('Please enter a valid phone number.');
                 return;
             }
-            if (!questionnaire[5].answer.first_name || !questionnaire[5].answer.surname) {
+            if (!questionnaire[4].answer.first_name || !questionnaire[4].answer.surname) {
                 setError("Please enter your name.");
                 return;
             }
