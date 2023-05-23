@@ -28,9 +28,9 @@ function ConsultationQuestion({ question, options, setAnswer, handleSubmit }) {
                             checked={question.answer === option}
                         />
                     {option === "In person consult (€35)" ? 
-                    <img src={InPersonConsultation} className="w-80 cursor-pointer" />
+                    <img src={InPersonConsultation} className="w-60 cursor-pointer" />
                     : 
-                    <img src={VirtualConsultation} className="w-80 cursor-pointer" />
+                    <img src={VirtualConsultation} className="w-60 cursor-pointer" />
                     }
                     </div>
                 </div>

@@ -36,12 +36,19 @@ function Questionnaire() {
     {
         id: 3,
         type: 'single-choice',
-        question: 'Where did you hear about us?',
-        options: ['Social Media', 'Google', 'Hotel (website)', 'Corporate partnership', 'Family/Friend', 'Repeat customer' , 'Other'],
+        question: 'Are you okay with needles?',
+        options: ['Yes', 'No'],
         answer: '',
     },
     {
         id: 4,
+        type: 'single-choice',
+        question: 'Where did you hear about us?',
+        options: ['Social Media', 'Google', 'Hotel', 'Corporate partnership', 'Influencer' , 'Family/Friend', 'Repeat customer' , 'Other'],
+        answer: '',
+    },
+    {
+        id: 5,
         type: 'consultation-question',
         question: 'Your personalised quiz results are now ready!',
         description: 'For a limited time we are offering free virtual consultations with qualified medical professionals to discuss your concerns, share cutting edge treatment options available to you and answer any of your questions. Look forward to connecting.',
@@ -49,21 +56,16 @@ function Questionnaire() {
         answer: '',
     },
     {
-      id: 5,
+      id: 6,
       type: 'multiple-inputs',
       question: 'Please provide your contact details:',
       answer: { first_name: '', surname: '' , email: '', phone: '' },
-    },
-    {
-        id: 6,
-        type: 'free-text',
-        question: 'Anything else we should know?',
-        answer: '',
     }
   ]);
 
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     const validateEmail = (email) => {
         // Regular expression for email validation
@@ -84,16 +86,16 @@ function Questionnaire() {
         } else {
             setError(null);
         }
-        if (currentQuestionIndex === 4) {
-            if (!validateEmail(questionnaire[4].answer.email)) {
+        if (currentQuestionIndex === 5) {
+            if (!validateEmail(questionnaire[5].answer.email)) {
                 setError('Please enter a valid email address.');
                 return;
             }
-            if (!validatePhone(questionnaire[4].answer.phone)) {
+            if (!validatePhone(questionnaire[5].answer.phone)) {
                 setError('Please enter a valid phone number.');
                 return;
             }
-            if (!questionnaire[4].answer.first_name || !questionnaire[4].answer.surname) {
+            if (!questionnaire[5].answer.first_name || !questionnaire[5].answer.surname) {
                 setError("Please enter your name.");
                 return;
             }
@@ -105,8 +107,8 @@ function Questionnaire() {
         // Redirect based on the answers
         // add switch case for each answer combination
         localStorage.setItem('questionnaireData', JSON.stringify(answers));
-        // navigate('/treatments');
-        window.top.location.href = 'https://www.carismaaesthetics.com/quiz-results';
+        navigate('/treatments');
+        //window.top.location.href = 'https://www.carismaaesthetics.com/quiz-results';
         }
     }
   
@@ -203,7 +205,7 @@ function Questionnaire() {
                         &larr; Back
                         </button>
                     )}
-                    {currentQuestionIndex !== 3 && (<button
+                    {currentQuestionIndex !== 4 && (<button
                         className="sm:static sm:mr-0 sm:mb-0 w-full py-2 h-12 custom-button-color text-white font-custom"
                         onClick={handleSubmit}
                         >

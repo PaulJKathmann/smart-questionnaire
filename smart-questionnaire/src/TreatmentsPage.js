@@ -68,7 +68,6 @@ function TreatmentsPage() {
         firstName = data[4].first_name;
     }
 
-
     return (
         <div className='min-h-screen flex items-start justify-center lg:pt-8'>
             <div className="min-h-screen p-1 lg:min-h-0 w-full">
