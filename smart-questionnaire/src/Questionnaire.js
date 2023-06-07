@@ -170,7 +170,6 @@ function Questionnaire() {
                 options={question.options}
                 setAnswer={handleAnswerChange}
                 setError={setError}
-                handleSubmit={handleSubmit}
             />
             );
         default:
@@ -205,13 +204,12 @@ function Questionnaire() {
                         &larr; Back
                         </button>
                     )}
-                    {currentQuestionIndex !== 4 && (<button
+                    <button
                         className="sm:static sm:mr-0 sm:mb-0 w-full py-2 h-12 custom-button-color text-white font-custom"
                         onClick={handleSubmit}
                         >
                         {currentQuestionIndex === questionnaire.length - 1 ? 'Submit' : 'Next'}
-                        </button>
-                    )}
+                    </button>
                     </div>
                 </div>
             </div>
