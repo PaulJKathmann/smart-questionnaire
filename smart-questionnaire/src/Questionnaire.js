@@ -75,7 +75,7 @@ function Questionnaire() {
 
     const validatePhone = (phone) => {
         // Regular expression for phone number validation
-        const re = /^[0-9\b]+$/;
+        const re = /^[+]?[0-9\b]+$/;
         return re.test(phone);
     };
 
@@ -189,7 +189,7 @@ function Questionnaire() {
             </h1>
                 {questionnaire[currentQuestionIndex].description ?  
                     <div className="flex items-center mb-6">
-                        <p className="text-sm custom-text-color mb-2 font-custom">{questionnaire[currentQuestionIndex].description}</p>
+                        <p className="text-sm custom-text-color mb-2 font-roboto">{questionnaire[currentQuestionIndex].description}</p>
                     </div> 
                     : null
                 }

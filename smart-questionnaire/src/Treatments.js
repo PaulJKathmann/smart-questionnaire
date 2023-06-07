@@ -11,6 +11,15 @@ import ThreadLiftIcon from './assets/thumbnails/ThreadLift.png';
 import UnderChinReductionIcon from './assets/thumbnails/UnderChinReduction.png';
 import MFUIcon from './assets/thumbnails/MFU.png';
 import LipFillersIcon from './assets/thumbnails/LipFiller.png';
+import {ReactComponent as IconWrinkles} from "./assets/icons/Wrinkles.svg";
+import {ReactComponent as IconThinLips} from "./assets/icons/ThinLips.svg";
+import {ReactComponent as IconFacialVolumising} from "./assets/icons/FacialVolumising.svg";
+import {ReactComponent as IconUnevenSkinTone} from "./assets/icons/UnevenSkinTone.svg";
+import {ReactComponent as IconAcne} from "./assets/icons/Acne.svg";
+import {ReactComponent as IconDoubleChin} from "./assets/icons/DoubleChin.svg";
+import {ReactComponent as IconDarkCircles} from "./assets/icons/DarkCircles.svg";
+import {ReactComponent as IconDrySkin} from "./assets/icons/DrySkin.svg";
+import {ReactComponent as IconOilySkin} from "./assets/icons/OilySkin.svg";
 
 
 
@@ -29,7 +38,7 @@ function Treatments() {
         "ThreadLift": { image: ThreadLiftIcon, link: "https://www.carismaaesthetics.com/threadliftmalta", description: "Thread lifts are a non-surgical alternative to a facelift. They involve inserting dissolvable threads into the skin to lift and tighten the skin. They are used to treat wrinkles and facial volume loss.", concerns: ["Wrinkles", "Facial volumising"] },
         "UnderChinReduction": { image: UnderChinReductionIcon, link: "https://www.carismaaesthetics.com/chinfatreductionmalta", description: "Under chin reduction is a treatment that involves injecting a fat dissolving solution into the skin. It is used to treat double chin.", concerns: ["Double chin"] },
         "MFU": { image: MFUIcon, link: "https://www.carismaaesthetics.com/mfu-ultight", description: "MFU (Micro Focused Ultrasound) is a treatment that uses ultrasound energy to tighten the skin. It is used to treat wrinkles and facial volume loss.", concerns: ["Wrinkles", "Facial volumising"] },
-        "LipFillers": { image: LipFillersIcon, link: "https://www.carismaaesthetics.com/lipfillers", description: "Lipfillers description", concerns: ["Thin Lips"] }
+        "Lip Fillers": { image: LipFillersIcon, link: "https://www.carismaaesthetics.com/lipfillers", description: "Lipfillers description", concerns: ["Thin lips"] }
    // get the treatments by concern using a map of concerns to treatments including the needle question
     }
     const withNeedleMap = { 
@@ -39,7 +48,7 @@ function Treatments() {
         "Dry skin": ["HydraFacial", "Mesotherapy", "Microneedling", "PRP"], 
         "Facial volumising": ["DermalFillers", "Collagen", "MFU", "ThreadLift", "UnderChinReduction"], 
         "Oily skin": ["PRP", "Microneedling", "Botox"], 
-        "Thin lips": ["LipFillers"], 
+        "Thin lips": ["Lip Fillers"], 
         "Uneven skin tone": ["HydraFacial", "Mesotherapy", "Microneedling", "PRP", "Botox"], 
         "Wrinkles": ["Botox", "DermalFillers", "Collagen", "MFU", "ThreadLift", "Mesotherapy"]
     }
@@ -51,12 +60,22 @@ function Treatments() {
         "Dry skin": ["HydraFacial", "Mesotherapy", "Microneedling", "PRP"],
         "Facial volumising": ["DermalFillers", "Collagen", "MFU", "ThreadLift", "UnderChinReduction"],
         "Oily skin": ["PRP", "Microneedling", "Botox"],
-        "Thin lips": ["LipFillers"],
+        "Thin lips": ["Lip Fillers"],
         "Uneven skin tone": ["HydraFacial", "Mesotherapy", "Microneedling", "PRP", "Botox"],
         "Wrinkles": ["Botox", "DermalFillers", "Collagen", "MFU", "ThreadLift", "Mesotherapy"]
     }
-    // if needle question true take set of treatments from withNeedleMap
-    // if needle question false take set of treatments from withoutNeedleMap
+
+    const optionIcons = {
+        'Wrinkles': IconWrinkles,
+        'Thin lips': IconThinLips,
+        'Facial volumising': IconFacialVolumising,
+        'Uneven skin tone': IconUnevenSkinTone,
+        'Acne': IconAcne,
+        'Double chin': IconDoubleChin,
+        'Dark circles': IconDarkCircles,
+        'Dry skin': IconDrySkin,
+        'Oily skin': IconOilySkin,
+    };
 
     useEffect(() => {
         const storedData = localStorage.getItem('questionnaireData');
@@ -111,24 +130,32 @@ function Treatments() {
                     <div className='border border-gray-100 mt-6'> </div>
                 </div>
                 <div className='w-full mx-auto max-w-3xl bg-white p-2 lg:p-4'>
-                    {console.log(treatments)}
                     {treatments.size > 0 && Array.from(treatments).map((treatment) => {
                         const treatmentData = treatmentsMap[treatment];
-                        console.log(treatmentData);
                         return (
-                            <div key={treatment}>
-                                <div className='flex flex-row items-center border-b border-gray-200 pb-4'>
-                                    <img className='w-48 h-48' src={treatmentData.image} alt={treatment}></img>
-                                    <h2 className='font-custom custom-text-color text-center text-1xl font-semibold mb-4'>{treatment}</h2>
-                                    <p>{treatmentData.description}</p>
-                                    <a href={treatmentData.link}>Learn more</a>
-                                    {treatmentData.concerns.map((concern, index) => {
-                                        return (
-                                            <div key={index}>
-                                                <p>{concern}</p>
-                                            </div>
-                                        )
-                                    })}
+                            <div key={treatment} className='mt-4'>
+                                <div className='flex flex-col items-center sm:flex-row border-b border-gray-200 pb-4'>
+                                    <img className='w-64 h-64' src={treatmentData.image} alt={treatment}></img>
+                                    <div className='flex flex-col m-4'>
+                                        <h2 className='text-left font-custom custom-text-color text-1xl font-semibold mb-4'>{treatment}</h2>
+                                        <p className='text-left'>{treatmentData.description}</p>
+                                        <div className='col-span-1 sm:col-span-2 my-4'>
+                                            <h2 className='text-left font-custom custom-text-color text-1xl font-semibold' >Treatable concerns</h2>
+                                        </div>
+                                        <div className='grid grid-cols-4 sm:grid-cols-6 gap-1'>
+                                            {treatmentData.concerns.map((concern, index) => {
+                                                const Icon = optionIcons[concern];
+                                                return (
+                                                    <div key={index} className='m-2 flex flex-col'>
+                                                        <Icon className="w-8 h-8 mx-auto" alt={concern} />
+                                                        <p className='text-xs mt-2'>{concern}</p>
+                                                    </div>
+                                                )
+                                            })}
+                                        </div>
+                                        <a href={treatmentData.link} className="sm:static sm:mr-0 sm:mb-0 w-full 
+                                        py-2 h-10 custom-button-color text-white font-custom mt-2">Learn more</a>
+                                    </div>
                                 </div>
                             </div>
                         )
