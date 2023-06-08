@@ -44,7 +44,7 @@ function MultipleChoiceQuestion({ question, options, setAnswer, setError}) {
                 return (
                 <div key={index} className={`${
                     question.answer.includes(option)
-                      ? "custom-border-color border-2 choice-selected"
+                      ? "choice-selected"
                       : "border-gray-200 border custom-text-color"
                   } p-4 bg-white cursor-pointer transition-all flex flex-col items-center justify-center`}
                   onClick={() => handleOptionsChange(option)}>
@@ -57,8 +57,7 @@ function MultipleChoiceQuestion({ question, options, setAnswer, setError}) {
                         checked={question.answer.includes(option)}
                         readOnly
                     />
-                    <Icon className={`w-8 h-8 
-                        ${question.answer.includes(option) ? "icon-selected" : "current-color"}`}
+                    <Icon className="w-8 h-8"
                          alt={option} />
                     <label htmlFor={`option-${index}`} onClick={(e) => e.stopPropagation()} className="text-sm flex items-center my-2 cursor-pointer font-custom">
                     {option}
