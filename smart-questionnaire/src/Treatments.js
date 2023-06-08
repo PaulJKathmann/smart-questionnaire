@@ -28,41 +28,41 @@ function Treatments() {
     const [treatments, setTreatments] = useState(new Set());
    // store all treatments in a hashmap with the key being the treatment and the values being the images, links, descriptions and list of concerns
     const treatmentsMap = {
-        "Collagen": { image: CollagenIcon, link: "https://www.carismaaesthetics.com/collagen-stimulator", description: "Collagen stimulators are used to stimulate the body’s own collagen production. They are injected into the skin and work by stimulating the body’s own collagen production. Collagen stimulators are used to treat wrinkles, facial volume loss, acne scars and cellulite.", concerns: ["Wrinkles", "Facial volumising", "Uneven skin tone", "Acne", "Double chin", "Dark circles", "Dry skin", "Oily skin"] },
-        "Botox":   { image: BotoxIcon, link: "https://www.carismaaesthetics.com/botoxmalta", description: "Botox is a muscle relaxant that is injected into the skin to reduce the appearance of wrinkles. It is used to treat wrinkles, facial slimming, teeth grinding, excessive sweating and migraines.", concerns: ["Wrinkles", "Oily skin"] },
-        "DermalFillers": { image: DermalFillersIcon, link: "https://www.carismaaesthetics.com/dermalfillersmalta", description: "Dermal fillers are used to restore volume loss in the face. They are injected into the skin and are used to treat wrinkles, facial volume loss, thin lips, facial slimming, acne scars, cellulite and dark circles.", concerns: ["Wrinkles", "Thin lips", "Facial volumising", "Double chin", "Dark circles"] },
+        "Collagen": { image: CollagenIcon, link: "https://www.carismaaesthetics.com/collagen-stimulator-malta", description: "Collagen stimulators are used to stimulate the body’s own collagen production. They are injected into the skin and work by stimulating the body’s own collagen production. Collagen stimulators are used to treat wrinkles, facial volume loss, acne scars and cellulite.", concerns: ["Wrinkles", "Facial volumising", "Acne", "Double chin"] },
+        "Botox":   { image: BotoxIcon, link: "https://www.carismaaesthetics.com/botox-malta", description: "Botox is a drug that temporarily paralyzes muscle. In small doses is used to treat wrinkles, facial slimming, decrease the oil production, excessive sweating and migraines.", concerns: ["Wrinkles", "Oily skin"] },
+        "DermalFillers": { image: DermalFillersIcon, link: "https://www.carismaaesthetics.com/dermalfillersmalta", description: "Dermal fillers are used to restore volume loss in the face. They are injected into the skin and are used to treat wrinkles, facial volume loss, thin lips, facial slimming and acne scars.", concerns: ["Wrinkles", "Facial volumising", "Acne", "Double chin"] },
         "HydraFacial": { image: HydraFacialIcon, link: "https://www.carismaaesthetics.com/hydrafacialmalta", description: "HydraFacial is a medical grade facial that uses patented technology to cleanse, extract and hydrate the skin. It is used to treat acne, uneven skin tone, dry skin and wrinkles.", concerns: ["Uneven skin tone", "Acne", "Dry skin"] },
-        "Mesotherapy": { image: MesotherapyIcon, link: "https://www.carismaaesthetics.com/mesotherapymalta", description: "Mesotherapy is a treatment that involves injecting a cocktail of vitamins, minerals and hyaluronic acid into the skin. It is used to treat dark circles, acne scars, cellulite and dry skin.", concerns: ["Dark circles", "Dry skin", "Uneven skin tone"] },
+        "Mesotherapy": { image: MesotherapyIcon, link: "https://www.carismaaesthetics.com/mesotherapymalta", description: "Mesotherapy is a treatment that involves injecting a cocktail of vitamins, minerals and hyaluronic acid into the skin. It is used to treat dark circles, acne scars, uneven skin tone and dry skin.", concerns: ["Dark circles", "Dry skin", "Uneven skin tone"] },
         "Microneedling": { image: MicroneedlingIcon, link: "https://www.carismaaesthetics.com/microneedlingmalta", description: "Microneedling is a treatment that involves using a device with tiny needles to create micro-injuries in the skin. It is used to treat acne scars, dark circles, dry skin, uneven skin tone and wrinkles.", concerns: ["Acne", "Dark circles", "Dry skin", "Uneven skin tone", "Wrinkles"] },
-        "PRP": { image: PRPIcon, link: "https://www.carismaaesthetics.com/prpmalta", description: "PRP (Platelet Rich Plasma) is a treatment that involves taking a sample of your blood, spinning it in a centrifuge to separate the plasma and then injecting the plasma into the skin. It is used to treat dark circles, acne scars, dry skin and wrinkles.", concerns: ["Dark circles", "Dry skin", "Uneven skin tone", "Wrinkles"] },
+        "PRP": { image: PRPIcon, link: "https://www.carismaaesthetics.com/prpmalta", description: "PRP (Platelet Rich Plasma) is a treatment that involves taking a sample of your blood, spinning it in a centrifuge to separate the plasma and then injecting the plasma into the skin. It is used to treat dark circles, acne scars, dry skin and wrinkles.", concerns: ["Dark circles", "Dry skin", "Acne", "Wrinkles"] },
         "ThreadLift": { image: ThreadLiftIcon, link: "https://www.carismaaesthetics.com/threadliftmalta", description: "Thread lifts are a non-surgical alternative to a facelift. They involve inserting dissolvable threads into the skin to lift and tighten the skin. They are used to treat wrinkles and facial volume loss.", concerns: ["Wrinkles", "Facial volumising"] },
         "UnderChinReduction": { image: UnderChinReductionIcon, link: "https://www.carismaaesthetics.com/chinfatreductionmalta", description: "Under chin reduction is a treatment that involves injecting a fat dissolving solution into the skin. It is used to treat double chin.", concerns: ["Double chin"] },
-        "MFU": { image: MFUIcon, link: "https://www.carismaaesthetics.com/mfu-ultight", description: "MFU (Micro Focused Ultrasound) is a treatment that uses ultrasound energy to tighten the skin. It is used to treat wrinkles and facial volume loss.", concerns: ["Wrinkles", "Facial volumising"] },
-        "Lip Fillers": { image: LipFillersIcon, link: "https://www.carismaaesthetics.com/lipfillers", description: "Lipfillers description", concerns: ["Thin lips"] }
-   // get the treatments by concern using a map of concerns to treatments including the needle question
+        "MFU": { image: MFUIcon, link: "https://www.carismaaesthetics.com/mfu-ultight", description: "MFU (Micro Focused Ultrasound) is a treatment that uses ultrasound energy to tighten the skin and reduce under chin fat. It is used to treat wrinkles and facial volume loss too.", concerns: ["Wrinkles", "Double chin", "Facial volumising"] },
+        "LipFillers": { image: LipFillersIcon, link: "https://www.carismaaesthetics.com/lipfillers", description: "Lipfillers are a cosmetic procedure where an injection is used to make lips appear fuller.", concerns: ["Thin lips"] }
+    // get the treatments by concern using a map of concerns to treatments including the needle question
     }
     const withNeedleMap = { 
-        "Acne": ["Collagen", "Microneedling", "PRP"], 
-        "Dark circles": ["DermalFillers", "PRP", "Microneedling", "Mesotherapy"], 
-        "Double chin": ["UnderChinReduction", "DermalFillers", "MFU", "Collagen"], 
-        "Dry skin": ["HydraFacial", "Mesotherapy", "Microneedling", "PRP"], 
-        "Facial volumising": ["DermalFillers", "Collagen", "MFU", "ThreadLift", "UnderChinReduction"], 
-        "Oily skin": ["PRP", "Microneedling", "Botox"], 
-        "Thin lips": ["Lip Fillers"], 
-        "Uneven skin tone": ["HydraFacial", "Mesotherapy", "Microneedling", "PRP", "Botox"], 
-        "Wrinkles": ["Botox", "DermalFillers", "Collagen", "MFU", "ThreadLift", "Mesotherapy"]
+        "Acne": ["Collagen", "Microneedling", "DermalFillers", "PRP"], 
+        "Dark circles": ["PRP", "Microneedling", "Mesotherapy"], 
+        "Double chin": ["UnderChinReduction", "DermalFillers", "Collagen"], 
+        "Dry skin": [ "Mesotherapy", "Microneedling", "PRP"], 
+        "Facial volumising": ["DermalFillers", "Collagen", "ThreadLift"], 
+        "Oily skin": ["Botox"], 
+        "Thin lips": ["LipFillers"], 
+        "Uneven skin tone": ["Mesotherapy", "Microneedling"], 
+        "Wrinkles": ["Botox", "DermalFillers", "Collagen", "ThreadLift", "Microneedling", "Mesotherapy", "PRP"]
     }
-   // non-needlemap
+    // non-needlemap
     const withoutNeedleMap = {
         "Acne": ["Chemical Peel", "HydraFacial", "Topical Skincare"],
-        "Dark circles": ["DermalFillers", "PRP", "Microneedling", "Mesotherapy"],
-        "Double chin": ["UnderChinReduction", "DermalFillers", "MFU", "Collagen"],
-        "Dry skin": ["HydraFacial", "Mesotherapy", "Microneedling", "PRP"],
-        "Facial volumising": ["DermalFillers", "Collagen", "MFU", "ThreadLift", "UnderChinReduction"],
-        "Oily skin": ["PRP", "Microneedling", "Botox"],
-        "Thin lips": ["Lip Fillers"],
-        "Uneven skin tone": ["HydraFacial", "Mesotherapy", "Microneedling", "PRP", "Botox"],
-        "Wrinkles": ["Botox", "DermalFillers", "Collagen", "MFU", "ThreadLift", "Mesotherapy"]
+        "Dark circles": ["Chemical Peel"],
+        "Double chin": ["MFU"],
+        "Dry skin": ["HydraFacial"],
+        "Facial volumising": ["MFU"],
+        "Oily skin": ["Chemical Peel "],
+        "Thin lips": ["no"],
+        "Uneven skin tone": ["HydraFacial", "Chemical Peel"],
+        "Wrinkles": ["MFU", " Chemical Peel"]
     }
 
     const optionIcons = {

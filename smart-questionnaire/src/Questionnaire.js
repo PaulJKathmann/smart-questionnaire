@@ -109,7 +109,7 @@ function Questionnaire() {
         // add switch case for each answer combination
         localStorage.setItem('questionnaireData', JSON.stringify(answers));
         sendDataToZoho(answers);
-        //navigate('/treatments');
+        navigate('/treatments');
         //window.top.location.href = 'https://www.carismaaesthetics.com/quiz-results';
         }
     }
