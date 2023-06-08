@@ -57,7 +57,7 @@ function MultipleChoiceQuestion({ question, options, setAnswer, setError}) {
                         checked={question.answer.includes(option)}
                         readOnly
                     />
-                    <Icon className="w-8 h-8"
+                    <Icon className="w-12 h-12"
                          alt={option} />
                     <label htmlFor={`option-${index}`} onClick={(e) => e.stopPropagation()} className="text-sm flex items-center my-2 cursor-pointer font-custom">
                     {option}
