@@ -14,6 +14,7 @@
 .choice-selected {
   border-color: #9BB1B2;
   border-width: 2px;
+  color: #9B8D83;
 }
 
 .icon-selected path, .icon-selected circle {
