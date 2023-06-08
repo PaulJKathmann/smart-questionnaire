@@ -6,6 +6,7 @@ import ProgressBar from './ProgressBar';
 import FreeTextField from './FreeTextField';
 import { Navigate, useNavigate } from 'react-router-dom';
 import ConsultationQuestion from './ConsultationQuestion';
+import { sendDataToZoho } from './api';
 
 
 function Questionnaire() {
@@ -107,8 +108,9 @@ function Questionnaire() {
         // Redirect based on the answers
         // add switch case for each answer combination
         localStorage.setItem('questionnaireData', JSON.stringify(answers));
+        sendDataToZoho(answers);
         //navigate('/treatments');
-        window.top.location.href = 'https://www.carismaaesthetics.com/quiz-results';
+        //window.top.location.href = 'https://www.carismaaesthetics.com/quiz-results';
         }
     }
   

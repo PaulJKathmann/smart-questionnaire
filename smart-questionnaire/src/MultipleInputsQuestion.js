@@ -1,17 +1,27 @@
-import React from "react";
+import React, { useEffect} from "react";
 
 function MultipleInputsQuestion({ question, setAnswer, setShowError }) {
-    const inputFocus = (e) => {
-        e.target.previousElementSibling.classList.remove('mt-3', 'text-sm');
-        e.target.previousElementSibling.classList.add('text-[9px]', 'mt-1');
-    };
+
+    useEffect(() => {
+        ['first_name', 'surname', 'email', 'phone'].forEach((property) => {
+            const input = document.getElementById(property);
+            if (input) {
+                const label = input.previousElementSibling;
+                if (label) {
+                    if (question.answer[property]) {
+                        label.classList.remove('mt-3', 'text-sm');
+                        label.classList.add('text-[9px]', 'mt-1');
+                    } else {
+                        label.classList.remove('text-[9px]', 'mt-1');
+                        label.classList.add('mt-3', 'text-sm');
+                    }
+                }
+            }
+        });
+    }, [question.answer]);
     
-    const inputBlur = (e) => {
-        if (!e.target.value) {
-            e.target.previousElementSibling.classList.remove('text-[9px]', 'mt-1');
-            e.target.previousElementSibling.classList.add('mt-3', 'text-sm');
-        }
-    };
+
+    
     return (
         <div>
             <div className="relative mb-4">
@@ -31,8 +41,6 @@ function MultipleInputsQuestion({ question, setAnswer, setShowError }) {
                         first_name: e.target.value,
                     })
                     }
-                    onFocus={inputFocus}
-                    onBlur={inputBlur}
                     className="w-full border border-gray-300  p-3 focus:outline-none focus:custom-border-color"
                 />
             </div>
@@ -42,15 +50,13 @@ function MultipleInputsQuestion({ question, setAnswer, setShowError }) {
                 </label>
                 <input
                     type="text"
-                    id="name"
+                    id="surname"
                     value={question.answer.surname}
                     onChange={(e) => setAnswer(question.id, {
                         ...question.answer,
                         surname: e.target.value,
                     })
                     }
-                    onFocus={inputFocus}
-                    onBlur={inputBlur}
                     className="w-full border border-gray-300 p-3 focus:outline-none focus:custom-border-color"
                 />
             </div>
@@ -68,8 +74,6 @@ function MultipleInputsQuestion({ question, setAnswer, setShowError }) {
                         email: e.target.value,
                     })
                     }
-                    onFocus={inputFocus}
-                    onBlur={inputBlur}
                     className="w-full border border-gray-300 p-3 focus:outline-none focus:custom-border-color"
                 />
             </div>
@@ -87,8 +91,6 @@ function MultipleInputsQuestion({ question, setAnswer, setShowError }) {
                         phone: e.target.value,
                     })
                     }
-                    onFocus={inputFocus}
-                    onBlur={inputBlur}
                     className="w-full border border-gray-300 p-3 focus:outline-none focus:custom-border-color"
                 />
             </div>

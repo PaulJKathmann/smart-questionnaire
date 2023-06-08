@@ -30,7 +30,6 @@ function ConsultationQuestion({ question, options, setAnswer }) {
                             <img src={VirtualConsultation} className={`h-88 w-88 cursor-pointer ${question.answer === option ? 'choice-selected' : ''}`} />)
                         }
                     </div>
-                    
                 </div>
             ))}
             </div>
