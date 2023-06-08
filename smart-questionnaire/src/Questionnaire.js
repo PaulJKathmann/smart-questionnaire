@@ -37,7 +37,7 @@ function Questionnaire() {
     {
         id: 3,
         type: 'single-choice',
-        question: 'Are you okay with needles?',
+        question: 'Are you comfortable with injectable treatments (e.g., Botox, fillers…)',
         options: ['Yes', 'No'],
         answer: '',
     },
