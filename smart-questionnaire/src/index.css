@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 .custom-button-color {
-  background-color: #96B2B2;
+  background-color: #DBE4E4;
+  color: #706765;
 }
 
 .custom-background-color {

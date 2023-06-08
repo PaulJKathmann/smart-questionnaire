@@ -107,8 +107,8 @@ function Questionnaire() {
         // Redirect based on the answers
         // add switch case for each answer combination
         localStorage.setItem('questionnaireData', JSON.stringify(answers));
-        navigate('/treatments');
-        //window.top.location.href = 'https://www.carismaaesthetics.com/quiz-results';
+        //navigate('/treatments');
+        window.top.location.href = 'https://www.carismaaesthetics.com/quiz-results';
         }
     }
   
@@ -205,7 +205,7 @@ function Questionnaire() {
                         </button>
                     )}
                     <button
-                        className="sm:static sm:mr-0 sm:mb-0 w-full py-2 h-12 custom-button-color text-white font-custom"
+                        className="sm:static sm:mr-0 sm:mb-0 w-full py-2 h-12 custom-button-color font-custom"
                         onClick={handleSubmit}
                         >
                         {currentQuestionIndex === questionnaire.length - 1 ? 'Submit' : 'Next'}
