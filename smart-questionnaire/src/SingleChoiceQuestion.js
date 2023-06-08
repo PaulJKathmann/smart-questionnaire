@@ -16,7 +16,7 @@ function SingleChoiceQuestion({ question, options, setAnswer, setError }) {
           {options.map((option, index) => (
             <div key={index} className={`${
                 question.answer === option
-                  ? "custom-border-color border-2 choice-selected"
+                  ? "choice-selected"
                   : "border-gray-200 border custom-text-color"
               } p-4 bg-white cursor-pointer transition-all`}
               onClick={() => handleClick(question.id, option)}

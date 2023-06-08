@@ -1,10 +1,6 @@
 import React from "react";
-import InPersonConsultation from './assets/thumbnails-consultation/In person consult.png';
-import VirtualConsultation from './assets/thumbnails-consultation/Virtual consult.png';
-import InPersonConsultationSelected from './assets/thumbnails-consultation/In person consult selected.png';
-import VirtualConsultationSelected from './assets/thumbnails-consultation/Virtual consult selected.png';
-import SkipConsultation from './assets/thumbnails-consultation/Skip consultation button.png';
-import SkipConsultationSelected from './assets/thumbnails-consultation/Skip consultation button selected.png';
+import InPersonConsultation from './assets/thumbnails-consultation/InPersonconsult.png'
+import VirtualConsultation from './assets/thumbnails-consultation/VirtualConsult.png';
 
 function ConsultationQuestion({ question, options, setAnswer }) {
    const consultationOptions = options.slice(0, 2);
@@ -27,44 +23,42 @@ function ConsultationQuestion({ question, options, setAnswer }) {
                             checked={question.answer === option}
                         />
                         {option === "In person consult (€35)" ? 
-                            (question.answer === option ? 
-                                <img src={InPersonConsultationSelected} className="w-62 cursor-pointer" />
-                                : 
-                                <img src={InPersonConsultation} className="w-62 cursor-pointer" />
-                            ) 
-                            : 
-                            (question.answer === option ? 
-                                <img src={VirtualConsultationSelected} className="w-62 cursor-pointer" />
-                                : 
-                                <img src={VirtualConsultation} className="w-62 cursor-pointer" />
-                            )
+                            <img src={InPersonConsultation} className={`h-88 w-88 cursor-pointer ${question.answer === option ? 'choice-selected' : ''}`} /> 
+                            :
+                        (option === "Free virtual consult (Newsletter)" 
+                            &&
+                            <img src={VirtualConsultation} className={`h-88 w-88 cursor-pointer ${question.answer === option ? 'choice-selected' : ''}`} />)
                         }
                     </div>
+                    
                 </div>
             ))}
             </div>
             <div className="mt-4">
-                <div key={3}
-                onClick={() => setAnswer(question.id, options[2])}
-                >
-                    <div key={3} className="flex items-center">
-                        <input
-                            type="radio"
-                            id={`option-${3}`}
-                            name="single-choice"
-                            value={options[2]}
-                            className="hidden"
-                            onChange={event => setAnswer(question.id, event.target.value)}
-                            checked={question.answer === options[2]}
-                        />
-                        {(question.answer === options[2]) ? 
-                            <img src={SkipConsultationSelected} className="w-62 cursor-pointer" /> 
-                            : 
-                            <img src={SkipConsultation} className="w-62 cursor-pointer" />
-                        }
+                        <div key={3} className={`${
+                            question.answer.includes("Skip Consultation")
+                            ? "choice-selected"
+                            : "border-gray-200 border custom-text-color"
+                        } border-gray-200 border p-1 justify-center items-center cursor-pointer`}
+                        onClick={() => setAnswer(question.id, options[2])}
+                        >
+                            <div key={3} className="flex items-center justify-center">
+                                <input
+                                    type="radio"
+                                    id={`option-${3}`}
+                                    name="single-choice"
+                                    value={options[2]}
+                                    className="hidden"
+                                    onChange={event => setAnswer(question.id, event.target.value)}
+                                    checked={question.answer === options[2]}
+                                />
+                                <div className="flex justify-center">
+                                    <span className="flex items-center text-sm font-custom  custom-text-color">Skip Consultation</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+            
         </div>
       );
 }

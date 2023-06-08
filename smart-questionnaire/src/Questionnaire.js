@@ -52,7 +52,7 @@ function Questionnaire() {
         type: 'consultation-question',
         question: 'Your personalised quiz results are now ready!',
         description: 'For a limited time we are offering free virtual consultations with qualified medical professionals to discuss your concerns, share cutting edge treatment options available to you and answer any of your questions. Look forward to connecting.',
-        options: ['In person consult (€35)', 'Free virtual consult (Newsletter)', 'Skip Consultation'],
+        options: ['Free virtual consult (Newsletter)', 'In person consult (€35)', 'Skip Consultation'],
         answer: '',
     },
     {
