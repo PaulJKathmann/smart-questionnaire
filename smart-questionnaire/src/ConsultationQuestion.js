@@ -1,6 +1,6 @@
 import React from "react";
-import InPersonConsultation from './assets/thumbnails-consultation/InPersonconsult.png'
-import VirtualConsultation from './assets/thumbnails-consultation/VirtualConsult.png';
+import InPersonConsultationIcon from './assets/thumbnails-consultation/InPersonconsult.png'
+import VirtualConsultationIcon from './assets/thumbnails-consultation/VirtualConsult.png';
 
 function ConsultationQuestion({ question, options, setAnswer }) {
    const consultationOptions = options.slice(0, 2);
@@ -23,11 +23,28 @@ function ConsultationQuestion({ question, options, setAnswer }) {
                             checked={question.answer === option}
                         />
                         {option === "In person consult (€35)" ? 
-                            <img src={InPersonConsultation} className={`h-88 w-88 cursor-pointer ${question.answer === option ? 'choice-selected' : ''}`} /> 
+                        <div className={`${
+                            question.answer.includes(option)
+                              ? "choice-selected"
+                              : "border-gray-200 border custom-text-color"
+                          } h-72 w-72 p-2 bg-white cursor-pointer transition-all flex flex-col items-center justify-center`}>
+                            <img className="w-12 h-12 mb-4" src={InPersonConsultationIcon} alt="In-person consultation icon" />
+                        <h2 className="mb-4">In Person <br></br>Consult</h2>
+                        <h3>€35<br></br><br></br></h3>
+                    </div>
                             :
                         (option === "Free virtual consult (Newsletter)" 
                             &&
-                            <img src={VirtualConsultation} className={`h-88 w-88 cursor-pointer ${question.answer === option ? 'choice-selected' : ''}`} />)
+                            <div className={`${
+                                question.answer.includes(option)
+                                  ? "choice-selected"
+                                  : "border-gray-200 border custom-text-color"
+                              } h-72 w-72 p-2 bg-white cursor-pointer transition-all flex flex-col items-center justify-center`}>
+                                <img className="w-12 h-12 mb-4" src={VirtualConsultationIcon} alt="Virtual consultation icon" />
+                                <h2 className="mb-4">Virtual <br></br> Consult</h2>
+                                <h3>FREE <br></br>(Subscribe to Newsletter)</h3>
+                            </div>
+                        )
                         }
                     </div>
                 </div>
