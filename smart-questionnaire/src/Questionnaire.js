@@ -59,7 +59,7 @@ function Questionnaire() {
     {
       id: 6,
       type: 'multiple-inputs',
-      question: 'Please provide your contact details:',
+      question: 'Please provide your contact details',
       answer: { first_name: '', surname: '' , email: '', phone: '' },
     }
   ]);
@@ -101,17 +101,23 @@ function Questionnaire() {
                 return;
             }
         }
-        if (currentQuestionIndex < questionnaire.length - 1) {
+        if (currentQuestionIndex === 4 && questionnaire[4].answer === 'Skip Consultation') {
+            storeAndRedirect();
+        } else if (currentQuestionIndex < questionnaire.length - 1) {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
         } else {
+            storeAndRedirect();
+        }
+    }
+
+    const storeAndRedirect = () => {
         const answers = questionnaire.map((q) => q.answer);
         // Redirect based on the answers
         // add switch case for each answer combination
         localStorage.setItem('questionnaireData', JSON.stringify(answers));
         sendDataToZoho(answers);
-        //navigate('/treatments');
-        window.top.location.href = 'https://www.carismaaesthetics.com/quiz-results';
-        }
+        navigate('/treatments');
+        //window.top.location.href = 'https://www.carismaaesthetics.com/quiz-results';
     }
   
 
@@ -155,6 +161,7 @@ function Questionnaire() {
                 options={question.options}
                 setAnswer={handleAnswerChange}
                 setError={setError}
+                consultType={questionnaire[4].answer}
             />
             );
         case 'free-text':

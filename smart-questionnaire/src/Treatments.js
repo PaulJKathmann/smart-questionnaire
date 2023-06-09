@@ -109,7 +109,8 @@ function Treatments() {
 
     let firstName = 'You'
     if (data[5]) {
-        firstName = data[5].first_name;
+        if (data[5].first_name)
+            firstName = data[5].first_name;
     }
 
     return (
