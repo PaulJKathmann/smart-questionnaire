@@ -116,8 +116,8 @@ function Questionnaire() {
         // add switch case for each answer combination
         localStorage.setItem('questionnaireData', JSON.stringify(answers));
         sendDataToZoho(answers);
-        navigate('/treatments');
-        //window.top.location.href = 'https://www.carismaaesthetics.com/quiz-results';
+        //navigate('/treatments');
+        window.top.location.href = 'https://www.carismaaesthetics.com/quiz-results';
     }
   
 
@@ -190,7 +190,6 @@ function Questionnaire() {
   return (
     <div className="min-h-screen flex items-start justify-center lg:pt-8">
         <div className='w-full lg:w-1/2'>
-            <ProgressBar progressPercentage={Math.max(5, (currentQuestionIndex / (questionnaire.length - 1)) * 100)}/>
             <div className="min-h-screen p-1 lg:min-h-0 w-full mx-auto">
             <h1 className="text-2xl mb-4 mt-4 font-custom custom-text-color">
                 {questionnaire[currentQuestionIndex].question}
