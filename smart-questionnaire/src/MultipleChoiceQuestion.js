@@ -46,7 +46,7 @@ function MultipleChoiceQuestion({ question, options, setAnswer, setError}) {
                     question.answer.includes(option)
                       ? "choice-selected"
                       : "border-gray-200 border custom-text-color"
-                  } w-42 h-42 p-4 bg-white cursor-pointer transition-all flex flex-col items-center justify-center`}
+                  } h-36 p-2 bg-white cursor-pointer transition-all flex flex-col items-center justify-center`}
                   onClick={() => handleOptionsChange(option)}>
                     <input  
                         type="checkbox"
