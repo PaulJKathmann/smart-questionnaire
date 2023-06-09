@@ -11,6 +11,11 @@
   background-color: #F5EFE4;
 }
 
+.sandy-button {
+  background-color: #F6EFE3;
+  color: #706765;
+}
+
 .choice-selected {
   border-color: #9BB1B2;
   border-width: 4px;

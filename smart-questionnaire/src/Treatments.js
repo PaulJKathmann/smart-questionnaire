@@ -131,10 +131,10 @@ function Treatments() {
                                         <div className='w-64 h-72 bg-center bg-cover bg-no-repeat' style={{ backgroundImage: `url(${treatmentData.image})` }} alt={treatment}></div>
                                     </div>
                                     <div className='flex flex-col m-4'>
-                                        <h2 className='text-left font-custom custom-text-color text-1xl font-semibold mb-4'>{treatment}</h2>
+                                        <h2 className='text-left font-trajan custom-text-color text-2xl font-semibold mb-2'>{treatment}</h2>
                                         <p className='font-thin custom-text-color text-justify'>{treatmentData.description}</p>
                                         <div className='col-span-1 sm:col-span-2 my-4'>
-                                            <h2 className='text-left font-custom custom-text-color text-1xl font-semibold' >Skin concerns addressed</h2>
+                                            <h2 className='uppercase text-left font-custom custom-text-color text-1xl font-light' >Skin concerns addressed</h2>
                                         </div>
                                         <div className='grid grid-cols-4 sm:grid-cols-6 gap-1'>
                                             {treatmentData.concerns.map((concern, index) => {
@@ -148,7 +148,7 @@ function Treatments() {
                                             })}
                                         </div>
                                         <a href={treatmentData.link} className="sm:static sm:mr-0 sm:mb-0 w-full 
-                                        py-2 h-10 custom-button-color text-white font-custom mt-2">Learn more</a>
+                                        py-2 h-10 text-white uppercase font-custom sandy-button mt-2">Learn more</a>
                                     </div>
                                 </div>
                             </div>
