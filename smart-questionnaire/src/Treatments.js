@@ -142,7 +142,7 @@ function Treatments() {
                                                 return (
                                                     <div key={index} className='flex flex-col'>
                                                         <Icon className="w-8 h-8 mx-auto" alt={concern} />
-                                                        <p className='text-xs mt-2'>{concern}</p>
+                                                        <p className='text-xs mt-2 custom-text-color'>{concern}</p>
                                                     </div>
                                                 )
                                             })}

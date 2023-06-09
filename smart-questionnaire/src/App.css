@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+@font-face {
+  font-family: 'Trajan Pro';
+  src: url('./assets/fonts/TrajanPro-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Novecentowide-Normal';  /* use the actual font name here */
+  src: url('./assets/fonts/Novecentowide-Normal.otf') format('otf');  /* use the actual font file path and name here */
+  font-weight: 400;  /* adjust as needed */
+  font-style: normal;  /* adjust as needed */
+}

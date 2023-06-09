@@ -7,6 +7,7 @@ module.exports = {
       fontFamily: {
         'roboto': ['Roboto', 'sans-serif'],
         'custom': ['Novecentowide-Normal', 'sans-serif'],
+        'trajan': ['Trajan Pro', 'sans-serif'],
       },
     },
   },
