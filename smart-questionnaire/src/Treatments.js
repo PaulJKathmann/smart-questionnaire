@@ -116,17 +116,8 @@ function Treatments() {
         <div className='min-h-screen flex items-start justify-center lg:pt-8'>
             <div className="min-h-screen p-1 lg:min-h-0 w-full">
                 <div className='w-full mx-auto max-w-2xl bg-white p-1 lg:p-10'>
-                    <h2 className='font-custom custom-text-color text-center text-1xl font-semibold mb-4'>Recommendations</h2>
-                    <h1 className='font-custom custom-text-color text-center text-3xl font-semibold mb-4'>Made for {firstName}</h1>
-                    {data && data[4] === 'In person consult (€35)' ? 
-                    <p className='font-custom custom-text-color'>We have received your contact information and will be reaching out to you soon to schedule your appointment.
-                      <br></br>Below are possible treatments options typically suggested for your skin concerns. Kindly note that every individual is different and we look forward to discussing the best treatment plan 
-                      to address your unique needs. 
-                      </p> : 
-                       <p className='font-custom custom-text-color'>Please find below treatments options tailored to your skin concerns.
-                       <br></br>Kindly note that every individual is different and we highly recommend booking a consultation with one of our qualified practitioners to discuss what treatments would best address your unique needs.
-                       </p>
-                    }
+                    <h1 className='uppercase font-custom custom-text-color text-center text-2xl font-thin mb-1'>Recommendations</h1>
+                    <h1 className='uppercase font-custom custom-text-color text-center text-2xl font-thin mb-2'>Made for {firstName}</h1>
                     <div className='border border-gray-100 mt-6'> </div>
                 </div>
                 <div className='w-full mx-auto max-w-3xl bg-white p-2 lg:p-4'>
@@ -135,18 +126,20 @@ function Treatments() {
                         return (
                             <div key={treatment} className='mt-4'>
                                 <div className='flex flex-col items-center sm:flex-row border-b border-gray-200 pb-4'>
-                                    <img className='w-64 h-64' src={treatmentData.image} alt={treatment}></img>
+                                    <div className='flex flex-col items-center sm:flex-row'>
+                                        <div className='w-64 h-72 bg-center bg-cover bg-no-repeat' style={{ backgroundImage: `url(${treatmentData.image})` }} alt={treatment}></div>
+                                    </div>
                                     <div className='flex flex-col m-4'>
                                         <h2 className='text-left font-custom custom-text-color text-1xl font-semibold mb-4'>{treatment}</h2>
-                                        <p className='text-left'>{treatmentData.description}</p>
+                                        <p className='font-thin custom-text-color text-justify'>{treatmentData.description}</p>
                                         <div className='col-span-1 sm:col-span-2 my-4'>
-                                            <h2 className='text-left font-custom custom-text-color text-1xl font-semibold' >Treatable concerns</h2>
+                                            <h2 className='text-left font-custom custom-text-color text-1xl font-semibold' >Skin concerns addressed</h2>
                                         </div>
                                         <div className='grid grid-cols-4 sm:grid-cols-6 gap-1'>
                                             {treatmentData.concerns.map((concern, index) => {
                                                 const Icon = optionIcons[concern];
                                                 return (
-                                                    <div key={index} className='m-2 flex flex-col'>
+                                                    <div key={index} className='flex flex-col'>
                                                         <Icon className="w-8 h-8 mx-auto" alt={concern} />
                                                         <p className='text-xs mt-2'>{concern}</p>
                                                     </div>
