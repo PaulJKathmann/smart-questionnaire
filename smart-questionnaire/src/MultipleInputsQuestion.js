@@ -24,12 +24,11 @@ function MultipleInputsQuestion({ question, setAnswer, setShowError, consultType
     
     return (
         <div>
-            {consultType === "In person consult (€35)" ? <div className="relative mb-4">
-            <p className="text-sm custom-text-color mb-2 font-custom">
-            Please share your contact details where you would like us to reach you on to schedule your consultation</p>
+            <div className="relative mb-4">
+                <p className="text-sm custom-text-color mb-2 font-custom">
+                    Please share your contact details where you would like us to reach you on to schedule your consultation
+                </p>
             </div>
-            : null
-            }
         <div className="grid grid-cols-2 gap-1">
             <div className="relative mb-4">
                 <label htmlFor="first_name" className="font-custom absolute text-sm top-0 left-0 ml-3 mt-3 custom-text-color transition-all duration-200">
@@ -100,13 +99,12 @@ function MultipleInputsQuestion({ question, setAnswer, setShowError, consultType
         </div>
             {consultType === "Free virtual consult (Newsletter)" ? 
             <div className="relative mb-4">
-                <p className="custom-text-color text-xs font-custom"> You will be subscribed to our email list. See our <a className="underline" href="https://www.carismaaesthetics.com/privacy-policy">Privacy Policy</a> for more information.</p>
+                <p className="custom-text-color text-xs font-custom"> You will be subscribed to our email list. See our <a className="underline" rel="noreferrer" target="_blank" href="https://www.carismaaesthetics.com/privacy-policy">Privacy Policy</a> for more information.</p>
             </div>
             : null
             }
         </div>
-    );
-      
+    );     
 }
 
 export default MultipleInputsQuestion;

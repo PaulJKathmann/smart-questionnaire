@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import SingleChoiceQuestion from './SingleChoiceQuestion';
 import MultipleChoiceQuestion from './MultipleChoiceQuestion';
 import MultipleInputsQuestion from './MultipleInputsQuestion';
-import ProgressBar from './ProgressBar';
-import FreeTextField from './FreeTextField';
 import { Navigate, useNavigate } from 'react-router-dom';
 import ConsultationQuestion from './ConsultationQuestion';
 import { sendDataToZoho } from './api';
@@ -37,7 +35,8 @@ function Questionnaire() {
     {
         id: 3,
         type: 'single-choice',
-        question: 'Are you comfortable with injectable treatments (e.g., Botox, fillers…)',
+        question: 'Comfortable with Injectables?',
+        description: '(e.g., Botox, Fillers)',
         options: ['Yes', 'No'],
         answer: '',
     },
@@ -164,14 +163,6 @@ function Questionnaire() {
                 consultType={questionnaire[4].answer}
             />
             );
-        case 'free-text':
-            return (
-            <FreeTextField 
-                question={question}
-                options={question.options}
-                setAnswer={handleAnswerChange}
-            />
-            );
         case 'consultation-question':
             return (
             <ConsultationQuestion
@@ -191,12 +182,12 @@ function Questionnaire() {
     <div className="min-h-screen flex items-start justify-center lg:pt-8">
         <div className='w-full lg:w-1/2'>
             <div className="min-h-screen p-1 lg:min-h-0 w-full mx-auto">
-            <h1 className="text-2xl mb-4 mt-4 font-custom custom-text-color">
+            <h1 className="text-2xl mb-4 mt-4 font-custom font-thin custom-text-color">
                 {questionnaire[currentQuestionIndex].question}
             </h1>
                 {questionnaire[currentQuestionIndex].description ?  
-                    <div className="flex items-center mb-6">
-                        <p className="text-sm custom-text-color mb-2 font-roboto">{questionnaire[currentQuestionIndex].description}</p>
+                    <div className="flex items-center justify-center mb-6">
+                        <p className="text-sm custom-text-color font-light text-justify mb-2 font-roboto">{questionnaire[currentQuestionIndex].description}</p>
                     </div> 
                     : null
                 }

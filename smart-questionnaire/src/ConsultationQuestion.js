@@ -1,6 +1,6 @@
 import React from "react";
-import InPersonConsultationIcon from './assets/thumbnails-consultation/InPersonconsult.png'
-import VirtualConsultationIcon from './assets/thumbnails-consultation/VirtualConsult.png';
+import InPersonConsultationIcon from './assets/icons/InPersonConsultation.svg'
+import VirtualConsultationIcon from './assets/icons/VirtualConsultation.svg';
 
 function ConsultationQuestion({ question, options, setAnswer }) {
    const consultationOptions = options.slice(0, 2);
@@ -30,7 +30,7 @@ function ConsultationQuestion({ question, options, setAnswer }) {
                           } h-72 uppercase w-72 p-2 bg-white cursor-pointer transition-all flex flex-col items-center justify-center`}>
                             <img className="w-12 h-12 mb-4" src={InPersonConsultationIcon} alt="In-person consultation icon" />
                         <h2 className="mb-4 font-trajan">In Person <br></br>Consult</h2>
-                        <h3>€35<br></br><br></br></h3>
+                        
                     </div>
                             :
                         (option === "Free virtual consult (Newsletter)" 
@@ -42,7 +42,7 @@ function ConsultationQuestion({ question, options, setAnswer }) {
                               } h-72 w-72 p-2 uppercase bg-white cursor-pointer transition-all flex flex-col items-center justify-center`}>
                                 <img className="w-12 h-12 mb-4" src={VirtualConsultationIcon} alt="Virtual consultation icon" />
                                 <h2 className="mb-4 font-trajan">Virtual <br></br> Consult</h2>
-                                <h3>FREE <br></br>(Subscribe to Newsletter)</h3>
+                                <h5>FREE <br></br>(Subscribe to<br></br>Newsletter)</h5>
                             </div>
                         )
                         }
