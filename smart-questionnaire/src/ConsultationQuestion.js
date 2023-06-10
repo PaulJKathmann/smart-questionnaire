@@ -27,10 +27,10 @@ function ConsultationQuestion({ question, options, setAnswer }) {
                             question.answer.includes(option)
                               ? "choice-selected"
                               : "border-gray-200 border custom-text-color"
-                          } h-72 uppercase w-72 p-2 bg-white cursor-pointer transition-all flex flex-col items-center justify-center`}>
+                          } uppercase h-64 w-64 py-2 bg-white cursor-pointer transition-all flex flex-col items-center justify-center overflow-auto box-border`}>
                             <img className="w-12 h-12 mb-4" src={InPersonConsultationIcon} alt="In-person consultation icon" />
                         <h2 className="mb-4 font-trajan">In Person <br></br>Consult</h2>
-                        
+                        <h5>€35<br></br><br></br><br></br></h5>
                     </div>
                             :
                         (option === "Free virtual consult (Newsletter)" 
@@ -39,7 +39,7 @@ function ConsultationQuestion({ question, options, setAnswer }) {
                                 question.answer.includes(option)
                                   ? "choice-selected"
                                   : "border-gray-200 border custom-text-color"
-                              } h-72 w-72 p-2 uppercase bg-white cursor-pointer transition-all flex flex-col items-center justify-center`}>
+                              } h-64 w-64 py-2 uppercase bg-white cursor-pointer transition-all flex flex-col items-center justify-center overflow-auto box-border`}>
                                 <img className="w-12 h-12 mb-4" src={VirtualConsultationIcon} alt="Virtual consultation icon" />
                                 <h2 className="mb-4 font-trajan">Virtual <br></br> Consult</h2>
                                 <h5>FREE <br></br>(Subscribe to<br></br>Newsletter)</h5>

@@ -56,6 +56,10 @@
   border-radius: 5px;
 }
 
+h5 {
+  font-size: 12px;
+}
+
 @font-face {
   font-family: 'Novecentowide-Normal';  /* use the actual font name here */
   src: url('./assets/fonts/Novecentowide-Normal.otf') format('otf');  /* use the actual font file path and name here */
