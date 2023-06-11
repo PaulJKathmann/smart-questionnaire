@@ -60,6 +60,20 @@ h5 {
   font-size: 12px;
 }
 
+.fallback-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 100%;
+  height: 100vh;
+}
+
+.fallback-grid-item {
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
+
+
 @font-face {
   font-family: 'Novecentowide-Normal';  /* use the actual font name here */
   src: url('./assets/fonts/Novecentowide-Normal.otf') format('otf');  /* use the actual font file path and name here */
