@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import SingleChoiceQuestion from './SingleChoiceQuestion';
-import MultipleChoiceQuestion from './MultipleChoiceQuestion';
+//import MultipleChoiceQuestion from './MultipleChoiceQuestion';
+
 import MultipleInputsQuestion from './MultipleInputsQuestion';
 import { Navigate, useNavigate } from 'react-router-dom';
 import ConsultationQuestion from './ConsultationQuestion';
@@ -8,6 +9,7 @@ import { sendDataToZoho } from './api';
 
 
 function Questionnaire() {
+  const MultipleChoiceQuestion = React.lazy(() => import('./MultipleChoiceQuestion'));
   const [questionnaire, setQuestionnaire] = useState([
     {
       id: 1,
@@ -80,6 +82,7 @@ function Questionnaire() {
     };
 
     const handleSubmit = () => {
+        console.log('handleSubmit triggered / next button clicked');
         if (![4, 5].includes(currentQuestionIndex) && !questionnaire[currentQuestionIndex].answer[0]) {
             setError('Please select an answer and try again');
             return;
@@ -145,12 +148,14 @@ function Questionnaire() {
             );
         case 'multiple-choice':
             return (
-            <MultipleChoiceQuestion
-                question={question}
-                options={question.options}
-                setAnswer={handleAnswerChange}
-                setError={setError}
-            />
+                <Suspense fallback={<div>Loading...</div>}>
+                    <MultipleChoiceQuestion
+                    question={question}
+                    options={question.options}
+                    setAnswer={handleAnswerChange}
+                    setError={setError}
+                    />
+                </Suspense>
             );
         case 'multiple-inputs':
             return (

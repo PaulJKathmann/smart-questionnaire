@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Questionnaire from './Questionnaire';
-import TreatmentsPage from './TreatmentsPage';
 import Treatments from './Treatments';
 
 function App() {
